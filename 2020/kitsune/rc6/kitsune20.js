@@ -4376,8 +4376,14 @@ var li = function(b) {
     D.call(this, b);
     console.log("this.speed =" + this.speed)
     console.log(typeof(this))
-    this.speed = ng("speed", b, 100) // This has to be changed for speed. Let's indoor speed increase, but not outdoor
-};
+    this.speed = 10
+    //ng("speed", b, 100) // This has to be changed for speed. Let's indoor speed increase, but not outdoor
+};   
+/*
+ng = function(b, g, m) {
+        return g && b in g ? g[b] : m
+    },
+*/
 q(li, D);
 G("playerMovement", li);
 var mi = function(b) {
