@@ -4374,7 +4374,7 @@ G("removeFx", ki);
 var li = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
-    this.speed = ng("speed", b, 10) // This has to be changed for speed
+    this.speed = ng("speed", b, 100) // This has to be changed for speed
 };
 q(li, D);
 G("playerMovement", li);
@@ -39338,11 +39338,11 @@ cr.prototype.start = function() {
     this.oc = [new Hp(this), new Ip(this), new Jp(this), new Kp(this), new Lp(this)];
     this.Sc = [new Mp(this)]
 };
-var er = function(b) {
+var er = function(b) { // b is the player?
         var g = dr(b);
         b = Q(b, Bi);
-        b = N(b);
-        uh("PLAYER_LOC", g.ec.get(Ki).name);
+        b = N(b); // this seems like it's finding the player's position and uh() posts it?
+        uh("PLAYER_LOC", g.ec.get(Ki).name); // look into PLAYER_LOC and PLAYER_POS
         uh("PLAYER_POS", b.toJSON())
     },
     dr = function(b) {
