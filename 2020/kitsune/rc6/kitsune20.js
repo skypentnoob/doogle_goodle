@@ -4381,7 +4381,7 @@ G("playerMovement", li);
 var mi = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
-    this.speed = 0;
+    this.speed = 100; // i don't know what this changes
     this.n0 = b.targetPos || B(0, 0)
 };
 q(mi, D);
