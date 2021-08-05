@@ -37549,8 +37549,7 @@ var yo = function(b) {
         c = hg.get(th("PLAYER_TEAM", ""));
         b = gg.get(b);
         var a = Lf("submitScoreUrl", void 0);
-        m = 4000000
-        a && xo(c) && xo(b) && xo(m) && 0 < m && 4000000 >= m && fe(a, function(n) {
+        a && xo(c) && xo(b) && xo(m) && 0 < m && 3 >= m && fe(a, function(n) {
             ne(n.target)
         }, "POST", JSON.stringify({
             team: c,
