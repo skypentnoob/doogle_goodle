@@ -3172,10 +3172,10 @@ var Yf = Jf("id", "144867217"),
         ["yellow", 3]
     ]),
     ig = ["blue", "red", "green", "yellow"];
-var jg = function(b, g) { // b and g are x and y? 
+var jg = function(b, g) { // b and g are x and y?  This function gets called a lot for setting coordinates. 
+                         // I think it does it for ALL OBJECTS
     this.x = b;
     this.y = g
-    console.log(this.x + " , " + this.y)
 };
 jg.prototype.add = function(b) {
     return B(this.x + b.x, this.y + b.y)
@@ -3201,7 +3201,7 @@ jg.prototype.toJSON = function() {
 jg.prototype.toString = function() {
     return "vec2(x: " + this.x + ", y: " + this.y + ")"
 };
-var B = function(b, g) {
+var B = function(b, g) { // so B sets this.x and this.y using jg
     return "number" === typeof b && "number" === typeof g ? new jg(b, g) : new jg(b.x, b.y)
 };
 var mg = {},
@@ -4375,7 +4375,7 @@ G("removeFx", ki);
 var li = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
-    this.speed = 15
+    this.speed = 15; // I didn't have a semicolon after this how did it not break?
     //ng("speed", b, 100) // This has to be changed for speed. Let's indoor speed increase, but not outdoor
 };   
 /*
@@ -4389,7 +4389,7 @@ var mi = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
     this.speed = 0; // i don't know what this changes
-    this.n0 = b.targetPos || B(0, 0)
+    this.n0 = b.targetPos || B(0, 0) // so b.targetPos or set this.x this.y to 0, what is n0?
 };
 q(mi, D);
 G("waypoint", mi); // something to do with "waypoints"
@@ -38116,7 +38116,7 @@ jp.prototype.tick = function() {
         }
         0 == C(c.velocity) && (c = g.ec.get(mi), c || (c = new mi, g.ec.set(mi, c)), 0 >= k.Caa ? (a = B(Math.round(ph(40,
             280)), 169.2), 20 < C(a.sub(m)) && (c.n0 = a, c.speed = 2.5 * Math.pow(b.zx, .5), g.gotoAndStop(c.n0.x < m.x ? "w" : "e"), k.Caa = 90 / Math.pow(b.zx, 1.5))) : (k.Caa--, Nj(g, "shoot", this.ha), g.yU.gotoAndStop(0)))
-    }
+    } // this looks like it's for archery? uses "mi" though which is for waypoints... Not sure what waypoints are for anyway.
 };
 var kp = function() {
     X.apply(this, arguments)
@@ -38490,7 +38490,8 @@ var Sp = function() {
     X.apply(this, arguments)
 };
 q(Sp, X);
-Sp.prototype.tick = function() {
+Sp.prototype.tick = function() { // I think this and Tp.prototype.tick are the movement functions
+    console.log(this.ha.name);
     Y(this.ha, [mi, M], function(b) {
         var g = N(b),
             m = b.ec.get(mi);
