@@ -4374,9 +4374,9 @@ G("removeFx", ki);
 var li = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
+    this.speed = 15
     console.log("this.speed =" + this.speed)
     console.log(typeof(this))
-    this.speed = 10
     //ng("speed", b, 100) // This has to be changed for speed. Let's indoor speed increase, but not outdoor
 };   
 /*
