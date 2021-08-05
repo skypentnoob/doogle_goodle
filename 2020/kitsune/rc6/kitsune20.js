@@ -2644,17 +2644,17 @@ var Fe = function() {
 };
 q(Fe, oe);
 var z = {};
-z.RU = new Ee("/logos/2020/kitsune/rc6/", "archery");
-z.BS = new Ee("/logos/2020/kitsune/rc6/", "climbing");
-z.bK = new Ee("/logos/2020/kitsune/rc6/", "marathon");
-z.nX = new Ee("/logos/2020/kitsune/rc6/", "overworld");
-z.vJ = new Ee("/logos/2020/kitsune/rc6/", "pingpong");
-z.cL = new Ee("/logos/2020/kitsune/rc6/", "rugby");
-z.iN = new Ee("/logos/2020/kitsune/rc6/", "skate");
-z.c1 = new Ee("/logos/2020/kitsune/rc6/", "ballad");
-z.K1 = new Ee("/logos/2020/kitsune/rc6/", "disco");
-z.j5 = new Ee("/logos/2020/kitsune/rc6/", "rock");
-z.xJ = new Ee("/logos/2020/kitsune/rc6/", "shared");
+z.RU = new Ee("/doogle_goodle/2020/kitsune/rc6/", "archery");
+z.BS = new Ee("/doogle_goodle/2020/kitsune/rc6/", "climbing");
+z.bK = new Ee("/doogle_goodle/2020/kitsune/rc6/", "marathon");
+z.nX = new Ee("/doogle_goodle/2020/kitsune/rc6/", "overworld");
+z.vJ = new Ee("/doogle_goodle/2020/kitsune/rc6/", "pingpong");
+z.cL = new Ee("/doogle_goodle/2020/kitsune/rc6/", "rugby");
+z.iN = new Ee("/doogle_goodle/2020/kitsune/rc6/", "skate");
+z.c1 = new Ee("/doogle_goodle/2020/kitsune/rc6/", "ballad");
+z.K1 = new Ee("/doogle_goodle/2020/kitsune/rc6/", "disco");
+z.j5 = new Ee("/doogle_goodle/2020/kitsune/rc6/", "rock");
+z.xJ = new Ee("/doogle_goodle/2020/kitsune/rc6/", "shared");
 var A = {};
 A.yqa = new y(z.RU, 0, 666.6669921875, 0);
 A.zqa = new y(z.RU, 1666.6669921875, 187.5, 0);
@@ -2964,7 +2964,7 @@ var cf = navigator.userAgent,
     };
 cf.includes("GT-I9300") && cf.includes("Chrome");
 var lf = function() {
-        return df.Ca.includes("/logos/") && df.Ca.includes(".html")
+        return df.Ca.includes("/doogle_goodle/") && df.Ca.includes(".html")
     },
     nf = function() {
         return !!document.getElementById("fkbx") || mf()
@@ -3130,7 +3130,7 @@ var Af = function(b, g) {
         Hf(g.toString(), !1)
     };
 var Yf = Jf("id", "144867217"),
-    Gb = new xb(vb, "/logos/2020/kitsune/rc6/kitsune_compiled_deferred_module.js"),
+    Gb = new xb(vb, "/doogle_goodle/2020/kitsune/rc6/kitsune_compiled_deferred_module.js"),
     $f = 1 / 30,
     ag = 1E3 * $f,
     bg = new createjs.Rectangle(0, 0, 960, 540),
@@ -4814,8 +4814,8 @@ var ij = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this);
     this.eu = this.Dab = this.wp = this.MY = this.Haa = 0;
-    this.dJ = ng("maxPoints", b, 30);
-    this.ha = ng("maxBalls", b, 5);
+    this.dJ = ng("maxPoints", b, 10000);
+    this.ha = ng("maxBalls", b, 5);  // ping pong challenge
     this.tY = 1E4
 };
 q(ij, D);
@@ -33939,7 +33939,7 @@ var jl = function(b, g, m) {
         })).then(function() {})
     };
 var ml = function() {
-    jl.call(this, "/logos/2020/kitsune/rc6/", ll, !1)
+    jl.call(this, "/doogle_goodle/2020/kitsune/rc6/", ll, !1)
 };
 q(ml, jl);
 Ga(ml);
@@ -36828,7 +36828,7 @@ An.prototype.load = function(b) {
     return ya(function(a) {
         if (1 == a.ha) {
             g.kb.style.background = "#000";
-            m = "/logos/2020/kitsune/rc6/" + b + ".mp4";
+            m = "/doogle_goodle/2020/kitsune/rc6/" + b + ".mp4";
             if (m in g.Bb) return k = g.Bb[m], g.ha = k, a.return(k);
             c = new xn;
             g.ha = c;
@@ -40219,7 +40219,7 @@ var cs = function() {
     S.apply(this, arguments)
 };
 q(cs, S);
-cs.prototype.fu = function(b) {
+cs.prototype.fu = function(b) { // Marathon opponent's speed function
     if (b.ec.has(Ug)) {
         var g = this.ha.kb.OPPONENT_COUNT;
         b = this.ha.find(Xg).sort(function(c, a) {
@@ -40287,7 +40287,7 @@ es.prototype.start = function() {
             break;
         case "5000m":
             this.kb = {
-                TOTAL_METER: 5E8,
+                TOTAL_METER: 5E3,
                 OPPONENT_COUNT: 12,
                 OPPONENT_MAX_SPEED: 8.4,
                 OPPONENT_MIN_SPEED: 4.7,
@@ -45914,7 +45914,7 @@ var bw = function(b) {
         if (b && g) {
             po.d = Yf;
             !oo && gl() && (oo = !0, so(10));
-            var m = [Jv(), kl(ml.AJ(), 0), xh(yh).load(Of, Pf, Ge, "/logos/2020/kitsune/rc6/")];
+            var m = [Jv(), kl(ml.AJ(), 0), xh(yh).load(Of, Pf, Ge, "/doogle_goodle/2020/kitsune/rc6/")];
             Promise.all(m).then(function() {
                 ["348D233EE4ED48398F13A42B3BD73D9C", "462CEA9764EE4C8D86AB0BDFEAEB1BF9"].map(function(k) {
                     return Sn(k)
