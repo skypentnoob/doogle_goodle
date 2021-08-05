@@ -131,15 +131,17 @@ else {
     } : null
 }
 var na = ja,
-    q = function(b, g) {
+    q = function(b, g) { // function of property, D function gets passed in here
         b.prototype = ia(g.prototype);
         b.prototype.constructor = b;
         if (na) na(b, g);
         else
             for (var m in g)
                 if ("prototype" != m)
-                    if (Object.defineProperties) {
+                    if (Object.defineProperties) { // here's some Javascript handling I guess
+                        console.log(Object.defineProperties)
                         var k = Object.getOwnPropertyDescriptor(g, m);
+                        
                         k && Object.defineProperty(b, m, k)
                     } else b[m] = g[m];
         b.lS = g.prototype
@@ -1500,7 +1502,7 @@ var Bc = "closure_lm_" + (1E6 * Math.random() | 0),
         m = Gc(m);
         return b && b[uc] ? Hc(b, g, m, Ia(k) ? !!k.capture : !!k, c) : Ic(b, g, m, !1, k, c)
     },
-    Ic = function(b, g, m, k, c, a) {
+    Ic = function(b, g, m, k, c, a) { // is this the same as this.IC? 
         if (!g) throw Error("o");
         var n = Ia(c) ? !!c.capture : !!c,
             h = Jc(b);
@@ -3208,11 +3210,11 @@ var mg = {},
     ng = function(b, g, m) {
         return g && b in g ? g[b] : m
     },
-    D = function(b) {
+    D = function(b) { // contains all the objects of something?
         b = void 0 === b ? {} : b;
         this.IC = ng("findable", b, !0)
     },
-    G = function(b, g) {
+    G = function(b, g) { // if property b in mg before, throw error. Otherwise add function g to mg indexed at b.
         if (b in mg) throw Error("C`" + b);
         mg[b] = g
     };
@@ -4024,18 +4026,18 @@ var Ih = function(b) {
     };
     this.Bb = {};
     b = document.querySelector("#hplogo2");
-    b.addEventListener("keydown", function(m) {
-        var k = m.which;
+    b.addEventListener("keydown", function(m) { // b and g are game state related. This is reading when keys are pressed
+        var k = m.which; // this returns the numberical keycode
         if (null != g.ha) {
             m.preventDefault();
-            g.Sc[k] = m.key;
-            if (k in g.kb) {
+            g.Sc[k] = m.key; // ok so m.key is read into g.Sc[k]. k the key's index
+            if (k in g.kb) { // if key in game's keyboard?
                 m = g.kb[k];
                 var c = g.Ca[m].indexOf(k);
                 g.Ca[m][c] = g.Ca[g.ha][0]
             }
             g.Ca[g.ha][0] = k;
-            Oh(g);
+            Oh(g); // Oh is processing key's pressed
             g.ha = null
         } else k in g.kb && (m.preventDefault(), g.Bb[k] = !0)
     });
@@ -4050,17 +4052,17 @@ var Ih = function(b) {
 };
 q(Ih, Nh);
 var Ph = function(b) {
-        b.Ca[2] = [38, 87];
-        b.Ca[3] = [40, 83];
-        b.Ca[0] = [37, 65];
-        b.Ca[1] = [39, 68];
-        b.Ca[4] = [32, 13];
-        b.Ca[5] = [8, 49, 46];
+        b.Ca[2] = [38, 87]; // 38 is up arrow, 87 is w
+        b.Ca[3] = [40, 83]; // down arrow, s
+        b.Ca[0] = [37, 65]; // left arrow, A
+        b.Ca[1] = [39, 68]; // right arrow, D
+        b.Ca[4] = [32, 13]; // space bar, enter key
+        b.Ca[5] = [8, 49, 46]; //backspace, 1, delete
         Oh(b)
     },
-    Oh = function(b) {
+    Oh = function(b) { // this is called on key presses, but is also a function in Ph
         b.kb = {};
-        for (var g in b.Ca)
+        for (var g in b.Ca) 
             for (var m = parseInt(g, 10), k = p(b.Ca[m]), c = k.next(); !c.done; c = k.next()) b.kb[c.value] = m
     };
 Ih.prototype.pZ = function() {
@@ -4935,7 +4937,7 @@ var wj = function(b, g) {
         if (null == b) throw Error("G");
         return B(b)
     },
-    Cj = function(b) {
+    Cj = function(b) { // typeError at beginning of climbing, but I was also spamming buttons 
         if (b.parent) return Bj(b, b.parent);
         throw Error("H");
     },
@@ -37173,7 +37175,7 @@ Zn.prototype.tick = function(b) {
             if (m = m.value, this.le && m.le) try {
                 m.tick(b)
             } catch (k) {
-                console.error(k)
+                console.error(k) // 6 errors from this in climbing beginning due to Cj? 
             }
 };
 var Pj = function(b, g) {
@@ -38490,11 +38492,11 @@ var Sp = function() {
     X.apply(this, arguments)
 };
 q(Sp, X);
-Sp.prototype.tick = function() { // I think this and Tp.prototype.tick are the movement functions
+Sp.prototype.tick = function() { // I think this and Tp.prototype.tick are the movement functions. Doesn't seem to affect overworld.
     console.log(this.ha.name);
     Y(this.ha, [mi, M], function(b) {
         var g = N(b),
-            m = b.ec.get(mi);
+            m = b.ec.get(mi); // uses mi instead of li. So waypoints again. I think these are minigame functions? 
         b = b.ec.get(M);
         g && m.n0 && m.speed && (g = m.n0.sub(g), b.velocity = C(g) > m.speed ? lg(g, m.speed) : g, .01 > C(b.velocity) && (b.velocity = B(0, 0)))
     })
@@ -38505,7 +38507,7 @@ var Tp = function() {
 q(Tp, X);
 Tp.prototype.tick = function() {
     var b = this;
-    Y(this.ha, [li, M], function(g) {
+    Y(this.ha, [li, M], function(g) { // calls li so it's related to game speed. But I think it's some minigame
         g = g.ec.get(bi);
         var m = b.ha.Cc.ak.ha;
         0 < C(m) && (g.direction = mh(m))
@@ -39122,7 +39124,7 @@ Lq.prototype.tick = function() {
                 m.lC) {
                 if (n = m.lC.ec.get(wi)) b.Ca[4] = !1, g.dispatchEvent(n.eventId), A.H3.play()
             } else if (k = b.ha, n = b.Sc, 0 < C(k) && (1 == n || 15 < n && 0 == n % 3)) {
-                A.H3.play();
+                A.H3.play(); // launching the minigame?
                 n = Mq(g);
                 var h = m.lC,
                     d = mh(k, !0);
@@ -39132,7 +39134,7 @@ Lq.prototype.tick = function() {
                             m.lC = n[c];
                             break
                         }
-                    } else Cj(h), k = n.filter(function(e) {
+                    } else Cj(h), k = n.filter(function(e) { // this Cj call errors at start of climbing
                         return e != h
                     }), n = k.sort(function(e, f) {
                         return Jq(h, f, d) - Jq(h, e, d)
@@ -39196,7 +39198,7 @@ Qq.prototype.start = function() {
 };
 var Rq = function(b) {
         return (b.ha ? b.ha : b.text) || ""
-    },
+    }, // What an odd collection of npcs
     Sq = "karasu ushi tengu trophyMaster coach oni racer momoDad locksmith grandpa blueOni redOni leader".split(" "),
     Tq = "lucky inari otohime littleMonkey rainBoy convini TaroMom sleepyCat kijiKid gatekeeper birthdayKid crab momoMom momo dangoKid shiba otter snowOwl".split(" "),
     Uq = "TaroMom Urashima arrowCollector bat bigCat birthdayKid birthdayMom blueOni coach convini crab dangoKid darkWolfie deer fish1 fish2 froggy gatekeeper grandpa hare inari invisibleOctopus kappa karasu kijiDad kijiKid kijimuna koma1 koma2 leaderBlue leaderGreen leaderRed leaderYellow littleMonkey locksmith lucky momoBird momoBlue momoDad momoDog momoMom momoMonkey momo momotaro monkeyBaker monkeyRetired noodleCook nova oniBaker oniDreamer otohime otter pango porcupine racerA racerB rainBoy redOni scroll seahorse shiba sister1 sister2 sister3 sleepingCat sleepyCat snowOwl statueArchery statueClimbing statueMarathon statueRugby statueSkate statueSwim statueTableTennis superMountainGirl tanooki tengu trainWorker traineeNoodle traineeRun trophyMaster ushi whiteOni wolfie yoichi youngArcher".split(" "),
@@ -39257,7 +39259,7 @@ Wq.prototype.getOptions = function() {
         return b.ec.get(wi).eventId.localeCompare(g.ec.get(wi).eventId)
     })
 };
-var Xq = function(b) {
+var Xq = function(b) { // must be generating expressions for lucky
         for (var g = b.tags.W ? b.tags.W[0] : "", m = p("Curious Happy Mad Neutral Sad Shocked Worried".split(" ")), k = m.next(); !k.done; k = m.next())
             if (k = g.replace(k.value, ""), k != g) {
                 g = k;
@@ -45685,7 +45687,7 @@ Zv.prototype.tick = function(b) {
     if (this.Bb && this.Bb.le) {
         var g = this.Ca.name;
         g && (g = Ko.get(g)) && (g = L(g)) && Po(g, !0);
-        this.Bb.tick(b)
+        this.Bb.tick(b) // something with launching / controlling minigames
     }
     Oo()
 };
@@ -45911,8 +45913,8 @@ var bw = function(b) {
         createjs.Touch.enable(b.ha);
         createjs.Ticker.interval = ag;
         b.ha.enableMouseOver();
-        b.ha.addEventListener("drawstart", function(g) {
-            g.paused || b.oc.tick(g)
+        b.ha.addEventListener("drawstart", function(g) { // drawing of game?
+            g.paused || b.oc.tick(g) // ticks game state
         })
     },
     $v = null,
