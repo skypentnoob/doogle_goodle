@@ -40297,7 +40297,7 @@ es.prototype.start = function() {
             break;
         default:
             this.kb = {
-                TOTAL_METER: 5E3,/*
+                TOTAL_METER: 5E8,/*
                 OPPONENT_COUNT: 6,
                 OPPONENT_MAX_SPEED: 7,
                 OPPONENT_MIN_SPEED: 4,
