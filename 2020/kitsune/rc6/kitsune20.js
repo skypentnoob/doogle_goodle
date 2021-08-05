@@ -4374,7 +4374,7 @@ G("removeFx", ki);
 var li = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
-    this.speed = ng("speed", b, 10) // I think this has to be changed for speed too
+    this.speed = ng("speed", b, 10) // This has to be changed for speed
 };
 q(li, D);
 G("playerMovement", li);
