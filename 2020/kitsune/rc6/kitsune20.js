@@ -3175,6 +3175,7 @@ var Yf = Jf("id", "144867217"),
 var jg = function(b, g) { // b and g are x and y? 
     this.x = b;
     this.y = g
+    console.log(this.x + " , " + this.y)
 };
 jg.prototype.add = function(b) {
     return B(this.x + b.x, this.y + b.y)
@@ -4375,8 +4376,6 @@ var li = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
     this.speed = 15
-    console.log("this.speed =" + this.speed)
-    console.log(typeof(this))
     //ng("speed", b, 100) // This has to be changed for speed. Let's indoor speed increase, but not outdoor
 };   
 /*
