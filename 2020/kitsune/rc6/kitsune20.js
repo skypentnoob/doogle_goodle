@@ -4386,6 +4386,7 @@ ng = function(b, g, m) {
     },
 */
 q(li, D);
+console.log(this.valueOf())
 G("playerMovement", li);
 var mi = function(b) {
     b = void 0 === b ? {} : b;
