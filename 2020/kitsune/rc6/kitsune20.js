@@ -3040,7 +3040,7 @@ var Af = function(b, g) {
         if (!b) return null;
         for (var m = p(Ff), k = m.next(); !k.done; k =
             m.next()) {
-            k = k.value;
+            k = k.value; // k.value is some sort of game container I think
             var c = g;
             0 < k.length && (c = g.charAt(0).toUpperCase() + g.substr(1));
             k += c;
@@ -3172,7 +3172,7 @@ var Yf = Jf("id", "144867217"),
         ["yellow", 3]
     ]),
     ig = ["blue", "red", "green", "yellow"];
-var jg = function(b, g) {
+var jg = function(b, g) { // b and g are x and y? 
     this.x = b;
     this.y = g
 };
@@ -4374,7 +4374,8 @@ G("removeFx", ki);
 var li = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
-    this.speed = ng("speed", b, 100) // This has to be changed for speed
+    console.log("Are we calling this in overworld? hi!")
+    this.speed = ng("speed", b, 100) // This has to be changed for speed. Let's indoor speed increase, but not outdoor
 };
 q(li, D);
 G("playerMovement", li);
@@ -5212,7 +5213,7 @@ var nk = /\$[A-z_0-9]+/g,
         b = b.replace(/\|\|/g, " or ");
         return b = b.replace(/null/g, "false")
     },
-    pk = function(b) {
+    pk = function(b) { // seems to be evaluating some condition of the game alla k.replace("%", "")
         var g = Array.from(b.matchAll(nk), function(c) {
                 return c[0]
             }),
@@ -5221,7 +5222,7 @@ var nk = /\$[A-z_0-9]+/g,
         for (var k = g.next(); !k.done; k = g.next()) k = k.value, m[k] = th(k.replace("$", ""), !1);
         return !!exprEval.Parser.evaluate(b, m)
     },
-    qk = function(b) {
+    qk = function(b) { // game conditions evaluated here
         b = void 0 === b ? {} : b;
         D.call(this, b);
         this.conditions = [];
@@ -33838,7 +33839,7 @@ var Yk = new Map,
                     var c = k.value;
                     k = c.V + c.nodeName;
                     if (Yk.has(k)) break a;
-                    c = new al(c.V, c.nodeName, c.text, c.U, c.tags);
+                    c = new al(c.V, c.nodeName, c.text, c.U, c.tags); // I believe al calls text
                     Yk.set(k, c)
                 }
                 Zk.has(g.V) || Zk.set(g.V, []);
@@ -40449,7 +40450,7 @@ js.prototype.fu = function(b) {
         b.addEventListener("yes", function() {
             vh();
             ks();
-            Hq(g.ha.Cc, new Xn("overworld"));
+            Hq(g.ha.Cc, new Xn("overworld")); // ok so Xn is the overworld constructor. g.ha.Cc must be gamestate? Hq is overall game constructor?
             var k = g.ha.Cc.ha;
             k.Bb.splice(0, k.Bb.length);
             ls(k)
@@ -41735,7 +41736,7 @@ wt.prototype.tick = function() {
     g.nC || (g.nC = m);
     g.distance = Math.max(m.x - g.nC.x, g.distance);
     var c = this.ha.Cc.ak.ha;
-    C(c) ? (k.velocity = lg(c, "speed" == g.sB ? 100 : 100), b.ec.get(bi).direction = mh(c)) : k.velocity = B(0, 0); // I think this is in rugby?
+    C(c) ? (k.velocity = lg(c, "speed" == g.sB ? 4.5 : 2.5), b.ec.get(bi).direction = mh(c)) : k.velocity = B(0, 0); // I think this is in rugby?
     var a = kh(b.ec.get(bi).direction),
         n = "idle";
     0 < C(k.velocity) && (n = "walk");
@@ -41842,7 +41843,7 @@ yt.prototype.tick = function() {
             d = d.path;
             h.velocity = B(0, 0);
             if (0 < d.length) {
-                e = "speed" == g.sB ? 100 : 100; // no idea what this speed is for
+                e = "speed" == g.sB ? 4.5 : 2.5; // no idea what this speed is for, but still probably rugby
                 f = d[0];
                 var v = f.sub(n);
                 C(v) < e && 1 < d.length && (f = d[1], v = f.sub(n));
@@ -42220,7 +42221,7 @@ var Jt = ["n", "s", "e", "w", "action"],
         this.oc = this.Sc = this.kb = this.Xd = this.Ca = this.Bb = null
     };
 q(Ot, X);
-Ot.prototype.tick = function() {
+Ot.prototype.tick = function() { // I think this is climbing
     this.Ap = Q(this.ha, ck);
     this.Gf = Q(this.ha, [ak, Ui, M, bi]);
     this.Bb = this.Ap.ec.get(ck);
@@ -44875,7 +44876,7 @@ Lu.prototype.fu = function(b) { // Video processing function.
             b.addEventListener("close", function() {
                 g.ha && yn(g.ha);
                 g.Ca = null;
-                m.BL(!0)  // This is an anonymous function call? That has to do with promises above with speed maybe?
+                m.BL(!0)  // This is an anonymous function call? To determine if character spawns?
             });
             b.addEventListener("skip", function() {
                 g.ha && yn(g.ha);
@@ -45692,7 +45693,7 @@ var Hq = function(b, g) {
             m = b.kb;
             m.Bb && (co(m.Bb), m.Bb = null);
             (go(g.name) || ho(g.name)) && aw(b);
-            b.Pk == g ? m = b.Xd : (m = new(Mu(g.name))(b), $n(m));  // this is relevant to speed breaking >= 10
+            b.Pk == g ? m = b.Xd : (m = new(Mu(g.name))(b), $n(m));  // this is relevant to speed breaking >= 10 But I think it's video processing
             b.Pk = null;
             b.Xd = null;
             ao(m) ? Kr(b, m, g) : Kr(b, new Lr(b, m, g), g)
