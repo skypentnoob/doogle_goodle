@@ -4381,11 +4381,11 @@ G("playerMovement", li);
 var mi = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
-    this.speed = 100; // i don't know what this changes
+    this.speed = 0; // i don't know what this changes
     this.n0 = b.targetPos || B(0, 0)
 };
 q(mi, D);
-G("waypoint", mi);
+G("waypoint", mi); // something to do with "waypoints"
 var ni = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
@@ -41735,7 +41735,7 @@ wt.prototype.tick = function() {
     g.nC || (g.nC = m);
     g.distance = Math.max(m.x - g.nC.x, g.distance);
     var c = this.ha.Cc.ak.ha;
-    C(c) ? (k.velocity = lg(c, "speed" == g.sB ? 4 : 2.5), b.ec.get(bi).direction = mh(c)) : k.velocity = B(0, 0);
+    C(c) ? (k.velocity = lg(c, "speed" == g.sB ? 100 : 100), b.ec.get(bi).direction = mh(c)) : k.velocity = B(0, 0); // I think this is in rugby?
     var a = kh(b.ec.get(bi).direction),
         n = "idle";
     0 < C(k.velocity) && (n = "walk");
@@ -41842,7 +41842,7 @@ yt.prototype.tick = function() {
             d = d.path;
             h.velocity = B(0, 0);
             if (0 < d.length) {
-                e = "speed" == g.sB ? 4 : 2.5;
+                e = "speed" == g.sB ? 100 : 100; // no idea what this speed is for
                 f = d[0];
                 var v = f.sub(n);
                 C(v) < e && 1 < d.length && (f = d[1], v = f.sub(n));
