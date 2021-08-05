@@ -4374,7 +4374,7 @@ G("removeFx", ki);
 var li = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
-    this.speed = ng("speed", b, 3)
+    this.speed = ng("speed", b, 10) // I think this has to be changed for speed too
 };
 q(li, D);
 G("playerMovement", li);
@@ -37149,7 +37149,7 @@ Zn.prototype.end = function() {};
 var $n = function(b) {
         Promise.all([].concat(ha(b.Jk.map(function(g) {
             return g()
-        })))).then(function() {
+        })))).then(function() { // This is relevant to speed breaking when >= 10
             Sn(b.Xw);
             b.Wt = !0
         })
@@ -44855,7 +44855,7 @@ var Nu = function(b, g) {
         return b.BL()
     }), to(b.Cc.Ca.ha)
 };
-Ku.prototype.BL = function(b) {
+Ku.prototype.BL = function(b) { // This function is relevant to speed breaking >= 10. Calls Hq
     var g = this.Cc.Ca.ha;
     g && ((void 0 === b ? 0 : b) || uh(g + "_VIDEO_SEEN", !0), this.Cc.oc.clear(), Hq(this.Cc, Iu(g)), g && (ro("d2", g, !0), so(102)))
 };
@@ -44863,7 +44863,7 @@ var Lu = function() {
     S.apply(this, arguments)
 };
 q(Lu, S);
-Lu.prototype.fu = function(b) {
+Lu.prototype.fu = function(b) { // Video processing function. 
     if (b.ec.has(yi))
         if ("skippable" == this.ha.Cc.Ca.Ca) {
             var g = this.ha.Cc.oc,
@@ -44875,7 +44875,7 @@ Lu.prototype.fu = function(b) {
             b.addEventListener("close", function() {
                 g.ha && yn(g.ha);
                 g.Ca = null;
-                m.BL(!0)
+                m.BL(!0)  // This is an anonymous function call? That has to do with promises above with speed maybe?
             });
             b.addEventListener("skip", function() {
                 g.ha && yn(g.ha);
@@ -45692,7 +45692,7 @@ var Hq = function(b, g) {
             m = b.kb;
             m.Bb && (co(m.Bb), m.Bb = null);
             (go(g.name) || ho(g.name)) && aw(b);
-            b.Pk == g ? m = b.Xd : (m = new(Mu(g.name))(b), $n(m));
+            b.Pk == g ? m = b.Xd : (m = new(Mu(g.name))(b), $n(m));  // this is relevant to speed breaking >= 10
             b.Pk = null;
             b.Xd = null;
             ao(m) ? Kr(b, m, g) : Kr(b, new Lr(b, m, g), g)
