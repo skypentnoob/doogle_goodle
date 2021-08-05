@@ -40287,7 +40287,7 @@ es.prototype.start = function() {
             break;
         case "5000m":
             this.kb = {
-                TOTAL_METER: 5E3,
+                TOTAL_METER: 5E8,
                 OPPONENT_COUNT: 12,
                 OPPONENT_MAX_SPEED: 8.4,
                 OPPONENT_MIN_SPEED: 4.7,
