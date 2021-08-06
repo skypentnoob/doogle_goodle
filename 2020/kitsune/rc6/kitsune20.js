@@ -39461,7 +39461,7 @@ var gr = function() {
 q(gr, X);
 gr.prototype.tick = function() {
     var b = this;
-    console.log("keys of b: " + Object.keys(b));
+    // console.log("keys of b: " + Object.keys(b)); b's keys are ha le 
     Y(this.ha, [Bi, M, bi], function(g) {
         var m = g.ec.get(Bi),
             k = g.ec.get(M), // this is definitely velocity related. 
@@ -39470,9 +39470,9 @@ gr.prototype.tick = function() {
             n = a.ha, // aha is coefficient in front of x y when calculating the speed update
             h = Math.round(8 * C(n)) / 8,
             d = mh(n);
-            console.log("gr function triggered: k.velocity is:" + k.velocity)
+           // console.log("gr function triggered: k.velocity is:" + k.velocity)
         0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, 20), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, 15 * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
-    }) // This updates lucky's speed in the over world. k.velocity holds his current velocity. But for some reason that's ignored in favor of just setting it with a magic number in lg
+    }) // This updates lucky's speed in the over world. "playerMovement" holds his max speed. But for some reason that's ignored in favor of just setting it with a magic number in the call to lg
 };
 var nr = function() {
     X.apply(this, arguments)
@@ -40288,7 +40288,7 @@ es.prototype.start = function() {
     switch (this.Cc.Ca.ha) {
         case "800m":
             this.kb = {
-                TOTAL_METER: 1000,
+                TOTAL_METER: MAX_VALUE,
                 OPPONENT_COUNT: 6,
                 OPPONENT_MAX_SPEED: 7.6,
                 OPPONENT_MIN_SPEED: 4.2,
