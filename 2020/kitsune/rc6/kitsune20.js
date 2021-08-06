@@ -4306,8 +4306,9 @@ G("randomize", ai);
 var M = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
-    this.velocity = 15 || B(0, 0);
+    this.velocity = b.velocity || B(0, 0); // convinced this is how lucky is moved in overworld
     this.pC = b.zVelocity ? b.zVelocity : 0
+    console.log("M function triggered:" + zVelocity);
 };
 q(M, D);
 G("velocity", M);
@@ -42579,7 +42580,8 @@ cu.prototype.gu = function(b) {
     if (pi(b, [ik, Gk])) {
         var g = b.ec.get(ik);
         b.addEventListener("trigger", function(m) {
-            var k = m.NU.ec.get(M);
+            var k = m.NU.ec.get(M); // another instance of velocity
+            console.log("cu.prototype triggered. m.NU.ec is:" + m.NU.ec );
             0 == m.NU.ec.get(ak).sK && (k.pC = Math.max(0, k.pC) + g.speed)
         })
     }
