@@ -4308,7 +4308,7 @@ var M = function(b) {
     D.call(this, b);
     this.velocity = b.velocity || B(0, 0); // convinced this is how lucky is moved in overworld
     this.pC = b.zVelocity ? b.zVelocity : 0
-    console.log("M function triggered:" + zVelocity);
+    console.log("M function triggered:" + b.zVelocity);
 };
 q(M, D);
 G("velocity", M);
