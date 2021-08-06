@@ -4303,11 +4303,11 @@ var ai = function() {
 };
 q(ai, D);
 G("randomize", ai);
-var M = function(b) {
+var M = function(b) { // not triggered on every lucky move, so I'm not sure this is a lucky related velocity?
     b = void 0 === b ? {} : b;
     D.call(this, b);
     this.velocity = b.velocity || B(0, 0); // convinced this is how lucky is moved in overworld
-    this.pC = b.zVelocity ? b.zVelocity : 0
+    this.pC = b.zVelocity ? b.zVelocity : 0 // I think this is falling things
     console.log("M function triggered:" + b.zVelocity);
 };
 q(M, D);
@@ -37172,7 +37172,7 @@ var $n = function(b) {
 Zn.prototype.tick = function(b) {
     this.Pk = 0;
     this.Xd.clear();
-    Mj(this, this.Ca);
+    Mj(this, this.Ca); // reads key presses
     if (this.le && this.Ca.stage && this.Ca.stage.tickEnabled)
         for (var g = p(this.oc), m = g.next(); !m.done; m = g.next())
             if (m = m.value, this.le && m.le) try {
@@ -37217,8 +37217,8 @@ var Pj = function(b, g) {
                         if (!(a in mg)) throw Error("D`" + a);
                         var h = {};
                         for (c in n) h[c] = void 0 !== n[c].x && "number" == typeof n[c].x && void 0 !== n[c].y && "number" == typeof n[c].y ? B(n[c].x, n[c].y) : n[c];
-                        var d = new mg[a](h);
-                        g.ec.set(d.constructor, d)
+                        var d = new mg[a](h); // also calls M
+                        g.ec.set(d.constructor, d) // constructing game? Breaks if M breaks so it calls M
                     } catch (f) {
                         console.error(f)
                     }
@@ -39467,6 +39467,7 @@ gr.prototype.tick = function() {
             n = a.ha, // aha is coefficient in front of x y when calculating the speed update
             h = Math.round(8 * C(n)) / 8,
             d = mh(n);
+            console.log("gr function triggered: k is:" + k)
         0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, 5), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, 3 * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
     }) // I think... This is speed? Idk at the very least it's the player's movements
 };
@@ -45691,7 +45692,7 @@ Zv.prototype.tick = function(b) {
     if (this.Bb && this.Bb.le) {
         var g = this.Ca.name;
         g && (g = Ko.get(g)) && (g = L(g)) && Po(g, !0);
-        this.Bb.tick(b) // something with launching / controlling minigames
+        this.Bb.tick(b) // something with launching / controlling minigames And HUD. I think this is related to moving Lucky
     }
     Oo()
 };
