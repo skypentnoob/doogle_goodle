@@ -40288,7 +40288,7 @@ es.prototype.start = function() {
     switch (this.Cc.Ca.ha) {
         case "800m":
             this.kb = {
-                TOTAL_METER: 5,
+                TOTAL_METER: 1000,
                 OPPONENT_COUNT: 6,
                 OPPONENT_MAX_SPEED: 7.6,
                 OPPONENT_MIN_SPEED: 4.2,
