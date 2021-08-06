@@ -40133,6 +40133,7 @@ as.prototype.tick = function() {
     Yo.prototype.tick.call(this);
     var b = Q(this.ha, Sg),
         g = Q(this.ha, Ug).ec.get(Ug);
+        console.log("as function triggered in marathon:" + Object.keys(this));
     if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) {
         Vi(b, 1);
         b.ec.get(M).velocity = lg(B(1, 0), C(b.ec.get(M).velocity) + g.UB);
@@ -40159,7 +40160,7 @@ as.prototype.tick = function() {
             color: "#b58657",
             outline: "#6b4a29",
             Hw: 2
-        }) : To(this.ha.Cc.kb, L("FINISH"), {
+        }) : To(this.ha.Cc.kb, L("FINISH"), { // Weird that this gets called, but the game doesn't end.
             size: 80,
             shadow: "#111",
             outline: "#555",
@@ -42639,25 +42640,25 @@ var fu = Fe.AJ(),
     iu = [0, 2, 1, 3],
     ju = new Map([
         [100, {
-            text: "fuck you", //MISS
+            text: "Miss", //MISS
             color: "#f01d1d",
             outline: "#6e0505",
             scale: 1.2
         }],
         [100, {
-            text: "fuck you", //MISS
+            text: "Miss", //MISS
             color: "#f01d1d",
             outline: "#6e0505",
             scale: 1.2
         }],
         [100, {
-            text: "fuck you", //GOOD
+            text: "Good", //GOOD
             color: "#ffd500",
             outline: "#965000",
             scale: 1.4
         }],
         [100, {
-            text: "fuck you", //PERFECT
+            text: "Perfect", //PERFECT
             color: "#0bd60b",
             outline: "#055e05",
             scale: 1.5
