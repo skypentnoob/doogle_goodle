@@ -4306,7 +4306,7 @@ G("randomize", ai);
 var M = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
-    this.velocity = b.velocity || B(0, 0);
+    this.velocity = 15 || B(0, 0);
     this.pC = b.zVelocity ? b.zVelocity : 0
 };
 q(M, D);
@@ -39463,10 +39463,9 @@ gr.prototype.tick = function() {
             k = g.ec.get(M), // this is definitely velocity related. 
             c = g.ec.get(bi),
             a = b.ha.Cc.ak,
-            n = a.ha,
+            n = a.ha, // aha is coefficient in front of x y when calculating the speed update
             h = Math.round(8 * C(n)) / 8,
             d = mh(n);
-            console.log(n);
         0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, 5), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, 3 * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
     }) // I think... This is speed? Idk at the very least it's the player's movements
 };
