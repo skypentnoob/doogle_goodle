@@ -39743,7 +39743,7 @@ var zr = function() {
 };
 q(zr, X);
 zr.prototype.tick = function() {
-    console.log("zr function triggered. b's keys are: " + Object.keys(b));
+    //console.log("zr function triggered. b's keys are: " + Object.keys(b));
     Y(this.ha, M, function(b) {
         if (!b.ec.has(Ui) || !b.ec.has(ei)) {
             var g = b.ec.get(M).velocity,
