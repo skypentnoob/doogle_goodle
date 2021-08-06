@@ -40117,7 +40117,7 @@ Yr.prototype.tick = function() {
     var m = g.ec.get(ah).width;
     b = N(g).x + m;
     800 > b && ((Qr(g, this.ha) + m) / 24 > this.ha.kb.TOTAL_METER ? Zr(this, this.ha.ha.hka, B(b, 0)) : (g = g.ec.get(ah).end, g = rh(this.Ca.get(g)), Zr(this, g, B(b, 0))))
-};
+}; // I think this line breaks when TOTAL METER is greater than 800 for regular play. Not sure. Marathon investigation.
 var Zr = function(b, g, m) {
         var k = Q(b.ha, Ug);
         g = Pj(b.ha, g);
@@ -40312,7 +40312,7 @@ es.prototype.start = function() {
             break;
         default:
             this.kb = {
-                TOTAL_METER: 5E8,/*
+                TOTAL_METER: 1,/*
                 OPPONENT_COUNT: 6,
                 OPPONENT_MAX_SPEED: 7,
                 OPPONENT_MIN_SPEED: 4,
