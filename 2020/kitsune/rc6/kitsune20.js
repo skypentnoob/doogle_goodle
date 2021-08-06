@@ -38496,7 +38496,7 @@ var Sp = function() {
 };
 q(Sp, X);
 Sp.prototype.tick = function() { // I think this and Tp.prototype.tick are the movement functions. Doesn't seem to affect overworld.
-    console.log(this.ha.name);
+    console.log("Sp function triggered. this.ha.name:" + this.ha.name);
     Y(this.ha, [mi, M], function(b) {
         var g = N(b),
             m = b.ec.get(mi); // uses mi instead of li. So waypoints again. I think these are minigame functions? 
@@ -39459,6 +39459,7 @@ var gr = function() {
 q(gr, X);
 gr.prototype.tick = function() {
     var b = this;
+    console.log("keys of b: " + Object.keys(b));
     Y(this.ha, [Bi, M, bi], function(g) {
         var m = g.ec.get(Bi),
             k = g.ec.get(M), // this is definitely velocity related. 
@@ -39467,7 +39468,7 @@ gr.prototype.tick = function() {
             n = a.ha, // aha is coefficient in front of x y when calculating the speed update
             h = Math.round(8 * C(n)) / 8,
             d = mh(n);
-            console.log("gr function triggered: k is:" + k)
+            console.log("gr function triggered: k.velocity is:" + k.velocity)
         0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, 5), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, 3 * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
     }) // I think... This is speed? Idk at the very least it's the player's movements
 };
