@@ -11,3 +11,4 @@ Thanks to all discord members involved with putting the necessary files for the 
   - [ ] Swap hit function into conditional statement for determining end game
 - [ ] Roll indoors
 - [ ] Custom climbing/rugby/skate maps?
+- [ ] Go???
