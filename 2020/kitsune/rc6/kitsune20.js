@@ -39469,7 +39469,7 @@ gr.prototype.tick = function() {
             h = Math.round(8 * C(n)) / 8,
             d = mh(n);
             console.log("gr function triggered: k.velocity is:" + k.velocity)
-        0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, 10), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, 100 * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
+        0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, 20), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, 15 * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
     }) // This updates lucky's speed in the over world. k.velocity holds his current velocity. But for some reason that's ignored in favor of just setting it with a magic number in lg
 };
 var nr = function() {
@@ -41857,7 +41857,7 @@ yt.prototype.tick = function() {
             d = d.path;
             h.velocity = B(0, 0);
             if (0 < d.length) {
-                e = "speed" == g.sB ? 4.5 : 2.5; // no idea what this speed is for, but still probably rugby
+                e = "speed" == g.sB ? 10 : 2.5; // no idea what this speed is for, but still probably rugby
                 f = d[0];
                 var v = f.sub(n);
                 C(v) < e && 1 < d.length && (f = d[1], v = f.sub(n));
