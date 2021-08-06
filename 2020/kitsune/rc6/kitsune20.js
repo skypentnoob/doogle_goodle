@@ -37552,7 +37552,7 @@ var yo = function(b) {
     },
     Do = function(b, g, m) {
         var k = !1;
-        // wo[b].type undefined in marathon when changing TOTAL_METER
+        // wo[b].type undefined in marathon when changing TOTAL_METER (was an issue with marathon:4000m)
         console.log("Wo[b] is:" + wo[b] );
         if ("points" == wo[b].type && yo(b) < g || "time" == wo[b].type && (null == yo(b) || yo(b) > g)) uh(b + "_score", g),
             k = !0;
@@ -39743,6 +39743,7 @@ var zr = function() {
 };
 q(zr, X);
 zr.prototype.tick = function() {
+    console.log("zr function triggered. b's keys are: " + Object.keys(b));
     Y(this.ha, M, function(b) {
         if (!b.ec.has(Ui) || !b.ec.has(ei)) {
             var g = b.ec.get(M).velocity,
@@ -39872,7 +39873,7 @@ Hr.prototype.tick = function() {
         }
     })
 };
-Hr.prototype.Tc = function(b, g) {
+Hr.prototype.Tc = function(b, g) { // Marathon game function? Related to visibility
     var m = b.ec.get(Gk);
     if (!b.visible) return !1;
     a: {
@@ -39881,7 +39882,7 @@ Hr.prototype.Tc = function(b, g) {
             k = k.value;
             k.visible = !0;
             var c = g.localToLocal(0, 0, k);
-            if (k.hitTest(c.x, c.y)) {
+            if (k.hitTest(c.x, c.y)) { // If hit. B set to 1, k.visible set to 0? Maybe so you don't hit the same object twice?
                 k.visible = !1;
                 b = !0;
                 break a
@@ -39940,7 +39941,7 @@ var Mr = 180 * .55,
         X.apply(this, arguments)
     };
 q(Rr, X);
-Rr.prototype.tick = function() {
+Rr.prototype.tick = function() { // Marathon game function. Some math involved. I think movement of things on screen. Lucky "stumble"
     var b = Q(this.ha, [Sg, Ui]),
         g = b.ec.get(Sg),
         m = N(b),
@@ -39951,7 +39952,7 @@ Rr.prototype.tick = function() {
         0 < h.ec.get(Gk).ex.length && (g.Q_ = !0)
     });
     Y(this.ha, $g, function(h) {
-        0 < h.ec.get(Gk).ex.length && 0 == g.vK && 0 == g.KQ && (A.COa.play(), g.vK = 30, k.LL = .25 * k.LL)
+        0 < h.ec.get(Gk).ex.length && 0 == g.vK && 0 == g.KQ && (A.COa.play(), g.vK = 30, k.LL = .25 * k.LL) // confused on how g.vK works here though
     });
     0 < g.vK ? (g.vK--, Vi(b, 3)) : 0 < g.KQ ? (g.KQ--, Vi(b, 3), 4 == g.KQ && Qj(this.ha, Pj(this.ha, this.ha.ha.kXa), b)) : (Vi(b, 19), g.Q_ ? k.LL++ : k.LL = .9 * k.LL);
     0 < g.U_ ? g.U_-- : 0 == g.vK && 0 == g.KQ && c.Ca[4] && (g.KQ = 40, g.U_ = 150, Qj(this.ha,
@@ -39966,9 +39967,9 @@ Rr.prototype.tick = function() {
     0 < C(c) ? (b.ec.get(M).velocity = lg(c, g.eqa * C(c)), a = ch(0, (m.x / 320 - .2) / .2, 1), n = 0 == g.vK ? Math.pow(1 - a, 2) : 0, 0 < b.ec.get(M).velocity.x && (b.ec.get(M).velocity.x *= n, k.LL += a * a * .4)) : b.ec.get(M).velocity = B(0, 0);
     if (0 == C(c) || 0 < g.vK) m = 5 * ch(0, m.x / 320 - .1, .4), b.ec.get(M).velocity.x -= m;
     m = Pr(k.UB);
-    0 < g.vK ? Kj(b, "stumble") :
-        Kj(b, ["idle", "walk", "run", "naruto", "supernaruto"][m]);
-    Sr(m);
+    0 < g.vK ? Kj(b, "stumble") : // seems like g.vK holds the hit detection value? So we just need to run: 
+        Kj(b, ["idle", "walk", "run", "naruto", "supernaruto"][m]);    // var b = Q(this.ha, [Sg, Ui]), 
+    Sr(m);                                                             // g = b.ec.get(Sg)  and check g.vK?
     k.tick++
 };
 var Sr = function(b) {
@@ -39983,7 +39984,7 @@ var Sr = function(b) {
         X.apply(this, arguments)
     };
 q(Tr, X);
-Tr.prototype.tick = function() { // Marathon
+Tr.prototype.tick = function() { // Marathon. I think this mostly handles updating velocity. Maybe some other stuff
     var b = this,
         g = Q(this.ha, Sg),
         m = g.ec.get(Sg),
@@ -40131,12 +40132,16 @@ var Zr = function(b, g, m) {
         Yo.call(this, b, [Rr, Tr, Vr, Yr, $r])
     };
 q(as, Yo);
-as.prototype.tick = function() {
-    Yo.prototype.tick.call(this); // 
+as.prototype.tick = function() { // This seems to be one of the outer most functions for marathon.
+    Yo.prototype.tick.call(this); // This call was breaking when game mode set to "marathon:4000m"
     var b = Q(this.ha, Sg),
         g = Q(this.ha, Ug).ec.get(Ug);
-        console.log("as function triggered in marathon:" + Object.keys(this));
-    if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) {
+        
+        hit_object = b.ec.get(Sg); // testing this 
+        console.log("g's keys in as marathon function are: " + Object.keys(g));
+  //      console.log("as function triggered in marathon:" + Object.keys(this));
+   // if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
+    if(hit_object.vK){
         Vi(b, 1);
         b.ec.get(M).velocity = lg(B(1, 0), C(b.ec.get(M).velocity) + g.UB);
         g.UB = 0;
@@ -41264,7 +41269,7 @@ var ls = function(b) {
         if (k) {
             var c = ko(b.Cc.Ca.name);
             null == m && (m = Ao(k, g));
-            var a = Do(k, g, m); // this is called when minigames end. 
+            var a = Do(k, g, m); // this is used to update scores when minigame ends
             if (3 == m) {
                 if (!io(c)) {
                     Hq(b.Cc,
