@@ -39469,8 +39469,8 @@ gr.prototype.tick = function() {
             h = Math.round(8 * C(n)) / 8,
             d = mh(n);
             console.log("gr function triggered: k.velocity is:" + k.velocity)
-        0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, 10), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, 3 * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
-    }) // I think... This is speed? Idk at the very least it's the player's movements /// 
+        0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, 10), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, 10 * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
+    }) // This updates lucky's speed in the over world. k.velocity holds his current velocity. But for some reason that's ignored in favor of just setting it with a magic number in lg
 };
 var nr = function() {
     X.apply(this, arguments)
