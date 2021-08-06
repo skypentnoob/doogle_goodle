@@ -37552,6 +37552,8 @@ var yo = function(b) {
     },
     Do = function(b, g, m) {
         var k = !1;
+        // wo[b].type undefined in marathon when changing TOTAL_METER
+        console.log("Wo[b] is:" + wo[b] );
         if ("points" == wo[b].type && yo(b) < g || "time" == wo[b].type && (null == yo(b) || yo(b) > g)) uh(b + "_score", g),
             k = !0;
         if (0 >= m) return k;
@@ -37831,7 +37833,7 @@ var Yo = function(b, g, m) {
     this.Ca = !1;
     this.kb = this.Bb = 0;
     this.Xd = m || function() {
-        return Xo(k.ha.Cc.ha, k.Bb, k.kb)
+        return Xo(k.ha.Cc.ha, k.Bb, k.kb) // call to Xo to end game (at least marathon). Related to Xd
     }
 };
 q(Yo, X);
@@ -37845,7 +37847,7 @@ Yo.prototype.update = function(b, g) {
 };
 Yo.prototype.tick = function() {
     this.Ca && this.oc--;
-    0 >= this.oc && this.Xd()
+    0 >= this.oc && this.Xd() // Yo calls this to update game state
 };
 var $o = function(b, g, m, k) {
         k = void 0 === k ? "none" : k;
@@ -40130,7 +40132,7 @@ var Zr = function(b, g, m) {
     };
 q(as, Yo);
 as.prototype.tick = function() {
-    Yo.prototype.tick.call(this);
+    Yo.prototype.tick.call(this); // 
     var b = Q(this.ha, Sg),
         g = Q(this.ha, Ug).ec.get(Ug);
         console.log("as function triggered in marathon:" + Object.keys(this));
@@ -41262,7 +41264,7 @@ var ls = function(b) {
         if (k) {
             var c = ko(b.Cc.Ca.name);
             null == m && (m = Ao(k, g));
-            var a = Do(k, g, m);
+            var a = Do(k, g, m); // this is called when minigames end. 
             if (3 == m) {
                 if (!io(c)) {
                     Hq(b.Cc,
@@ -45694,7 +45696,7 @@ Zv.prototype.tick = function(b) {
     if (this.Bb && this.Bb.le) {
         var g = this.Ca.name;
         g && (g = Ko.get(g)) && (g = L(g)) && Po(g, !0);
-        this.Bb.tick(b) // something with launching / controlling minigames And HUD. I think this is related to moving Lucky
+        this.Bb.tick(b) // something with launching / controlling minigames And HUD. I think this is related to game clock
     }
     Oo()
 };
