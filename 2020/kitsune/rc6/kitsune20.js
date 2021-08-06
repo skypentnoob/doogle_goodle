@@ -4379,6 +4379,7 @@ var li = function(b) {
     D.call(this, b);
     this.speed = 15; // I didn't have a semicolon after this how did it not break?
     //ng("speed", b, 100) // This has to be changed for speed. Let's indoor speed increase, but not outdoor
+    // still not sure how outdoor speed is set
 };   
 /*
 ng = function(b, g, m) {
@@ -4386,7 +4387,7 @@ ng = function(b, g, m) {
     },
 */
 q(li, D);
-console.log(this.valueOf())
+//console.log(this.valueOf())
 G("playerMovement", li);
 var mi = function(b) {
     b = void 0 === b ? {} : b;
@@ -4990,7 +4991,7 @@ var wj = function(b, g) {
         else return;
         Kj(b, g, m)
     },
-    Kj = function(b, g, m) {
+    Kj = function(b, g, m) { // plays frames
         if (!b.gotoAndStop) return !1;
         if (b.currentLabel == g) return b.paused || (b.paused = !0), !1;
         if (void 0 === m || !m || 1 != b.children.length) return b.gotoAndStop(g), !0;
@@ -38133,7 +38134,7 @@ kp.prototype.tick = function() {
         c = 2;
     c += c * m.ut / 45;
     g.velocity = kg(B(k.x, 0), c);
-    0 == k.x ? Nj(b, "idle", this.ha) : 0 < k.x ? Nj(b, "right", this.ha) : Nj(b, "left", this.ha);
+    0 == k.x ? Nj(b, "idle", this.ha) : 0 < k.x ? Nj(b, "right", this.ha) : Nj(b, "left", this.ha); // archery velocity?
     m.Pw = Math.max(0, m.Pw - 1);
     this.ha.Cc.ak.kb[4] && 0 == m.Pw && (m.zN = Math.ceil(30 * (1 - m.ut / 45 * .77)), m.Pw = m.zN, b = N(b)) && (A.Aqa.play(), ap(this.ha, b, m.u_, "player"), m.u_ = "normal")
 };
@@ -38486,7 +38487,7 @@ Rp.prototype.tick = function() {
         var m = g.ec.get(li);
         g = g.ec.get(M);
         var k = b.ha.Cc.ak.ha;
-        g.velocity = lg(k, m.speed * C(k))
+        g.velocity = lg(k, m.speed * C(k)) // internal speed?
     })
 };
 var Sp = function() {
@@ -38766,7 +38767,7 @@ var sq = function(b, g) {
         b = ti(g, [di])[0];
         k && b.gotoAndPlay(0)
     };
-qq.prototype.tick = function() {
+qq.prototype.tick = function() { // definitely climbing
     var b = this;
     Y(this.ha, Dg, function(g) {
         var m = tq(b, g),
@@ -39125,10 +39126,10 @@ Lq.prototype.tick = function() {
                 m.lC) {
                 if (n = m.lC.ec.get(wi)) b.Ca[4] = !1, g.dispatchEvent(n.eventId), A.H3.play()
             } else if (k = b.ha, n = b.Sc, 0 < C(k) && (1 == n || 15 < n && 0 == n % 3)) {
-                A.H3.play(); // launching the minigame?
+                A.H3.play(); // launching the minigame? Actually seems to be overworld.
                 n = Mq(g);
                 var h = m.lC,
-                    d = mh(k, !0);
+                    d = mh(k, !0); // movement?
                 if ("n" == d || "s" == d)
                     for (k = 0; k < n.length; k++) {
                         if (n[k] == m.lC && (c = 0, "n" == d ? c = k - 1 : "s" == d && (c = k + 1), 0 <= c && c < n.length)) {
@@ -39459,14 +39460,15 @@ gr.prototype.tick = function() {
     var b = this;
     Y(this.ha, [Bi, M, bi], function(g) {
         var m = g.ec.get(Bi),
-            k = g.ec.get(M),
+            k = g.ec.get(M), // this is definitely velocity related. 
             c = g.ec.get(bi),
             a = b.ha.Cc.ak,
             n = a.ha,
             h = Math.round(8 * C(n)) / 8,
             d = mh(n);
+            console.log(n);
         0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, 5), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, 3 * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
-    })
+    }) // I think... This is speed? Idk at the very least it's the player's movements
 };
 var nr = function() {
     X.apply(this, arguments)
@@ -39977,7 +39979,7 @@ var Sr = function(b) {
         X.apply(this, arguments)
     };
 q(Tr, X);
-Tr.prototype.tick = function() {
+Tr.prototype.tick = function() { // Marathon
     var b = this,
         g = Q(this.ha, Sg),
         m = g.ec.get(Sg),
@@ -42501,7 +42503,7 @@ var Zt = function() {
     X.apply(this, arguments)
 };
 q(Zt, X);
-Zt.prototype.tick = function() {
+Zt.prototype.tick = function() { // I think this is font
     var b = Q(this.ha, ak).ec.get(ak),
         g = Q(this.ha, ck);
     g.time.text = lk(b.CN);
