@@ -40142,11 +40142,11 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
     var b = Q(this.ha, Sg),
         g = Q(this.ha, Ug).ec.get(Ug);
         
-       // hit_object = b.ec.get(Sg); // testing this 
+        hit_object = b.ec.get(Sg); // ok doesn't make it so you don't get scroll
         console.log("g's keys in as marathon function are: " + Object.keys(g));
   //      console.log("as function triggered in marathon:" + Object.keys(this));
-    if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
-  // if(hit_object.vK && !this.Ca){
+   // if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
+    if(hit_object.vK && !this.Ca){
         Vi(b, 1);
         b.ec.get(M).velocity = lg(B(1, 0), C(b.ec.get(M).velocity) + g.UB);
         g.UB = 0;
@@ -40325,7 +40325,7 @@ es.prototype.start = function() {
             break;
         default:
             this.kb = {
-                TOTAL_METER: -1,/*
+                TOTAL_METER: 5e8,/*
                 OPPONENT_COUNT: 6,
                 OPPONENT_MAX_SPEED: 7,
                 OPPONENT_MIN_SPEED: 4,
