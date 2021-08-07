@@ -37552,9 +37552,10 @@ var yo = function(b) {
     },
     Do = function(b, g, m) {
         var k = !1;
+        // b is name of game
         // wo[b].type undefined in marathon when changing TOTAL_METER (was an issue with marathon:4000m)
-        console.log("Wo[b].type is:" + wo[b].type );
-        console.log("Wo[b] keys is:" + Object.keys(Wo[b]));
+        //console.log("Wo[b].type is:" + wo[b].type ); time for marathon
+        //console.log("Wo[b] keys is:" + Object.keys(Wo[b])); // apparently anonymous functions don't have keys or something. Idk throws an error
         if ("points" == wo[b].type && yo(b) < g || "time" == wo[b].type && (null == yo(b) || yo(b) > g)) uh(b + "_score", g),
             k = !0;
         if (0 >= m) return k;
