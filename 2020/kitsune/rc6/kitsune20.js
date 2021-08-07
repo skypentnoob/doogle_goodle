@@ -21351,7 +21351,7 @@ var Ok = [
         tags: {
             W: ["yoichiNeutral"]
         },
-        text: "I'm always up for a game of Archery! Meet me outside at the red gate on the beach if you want to challenge me."
+        text: "I'm always checking the source code for clues! But boy is dialogue annoying to search through!"
     }]
 ];
 var Pk = createjs.Bitmap,
@@ -37553,7 +37553,8 @@ var yo = function(b) {
     Do = function(b, g, m) {
         var k = !1;
         // wo[b].type undefined in marathon when changing TOTAL_METER (was an issue with marathon:4000m)
-        console.log("Wo[b] is:" + wo[b] );
+        console.log("Wo[b].type is:" + wo[b].type );
+        console.log("Wo[b] keys is:" + Object.keys(Wo[b]));
         if ("points" == wo[b].type && yo(b) < g || "time" == wo[b].type && (null == yo(b) || yo(b) > g)) uh(b + "_score", g),
             k = !0;
         if (0 >= m) return k;
@@ -39994,7 +39995,7 @@ Tr.prototype.tick = function() { // Marathon. I think this mostly handles updati
         k = N(g),
         c = this.ha.find(Yg),
         a = Q(this.ha, Ug).ec.get(Ug);
-    Y(this.ha, Xg, function(n) {
+    Y(this.ha, Xg, function(n) { // another goofy Marathon function. Might determine sand
         var h = N(n),
             d = n.ec.get(Xg);
         n.gotoAndStop("idle");
@@ -40051,7 +40052,7 @@ var Vr = function(b) {
     this.Ca = this.kb = 200
 };
 q(Vr, X);
-Vr.prototype.tick = function() {
+Vr.prototype.tick = function() { // spawning function
     var b = Q(this.ha, Ug),
         g = b.ec.get(Ug),
         m = 5 / Math.pow(g.UB, 1.5);
@@ -40143,8 +40144,8 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
         hit_object = b.ec.get(Sg); // testing this 
         console.log("g's keys in as marathon function are: " + Object.keys(g));
   //      console.log("as function triggered in marathon:" + Object.keys(this));
-   // if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
-    if(hit_object.vK && !this.Ca){
+    if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
+   // if(hit_object.vK && !this.Ca){
         Vi(b, 1);
         b.ec.get(M).velocity = lg(B(1, 0), C(b.ec.get(M).velocity) + g.UB);
         g.UB = 0;
@@ -40291,7 +40292,7 @@ es.prototype.start = function() {
     switch (this.Cc.Ca.ha) {
         case "800m":
             this.kb = {
-                TOTAL_METER: 5e7,
+                TOTAL_METER: 300,
                 OPPONENT_COUNT: 6,
                 OPPONENT_MAX_SPEED: 7.6,
                 OPPONENT_MIN_SPEED: 4.2,
@@ -42763,7 +42764,7 @@ var nu = function(b, g, m, k) {
         if (!m.Ts) throw Error("U");
         ou(m.Ts, "default");
         Kj(a.Ts, "default");
-        a.track = k;
+        a.track = k; // track
         c.y = -1E3
     },
     pu = function() {
