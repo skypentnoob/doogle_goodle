@@ -4312,7 +4312,7 @@ var M = function(b) { // not triggered on every lucky move, so I'm not sure this
     D.call(this, b);
     this.velocity = b.velocity || B(0, 0); // convinced this is how lucky is moved in overworld
     this.pC = b.zVelocity ? b.zVelocity : 0 // I think this is falling things
-    console.log("M function triggered:" + b.zVelocity);
+   // console.log("M function triggered:" + b.zVelocity);
 };
 q(M, D);
 G("velocity", M);
@@ -37299,9 +37299,15 @@ l.find = function(b) {
         return pi(c, g)
     })
 };
+
+//Rr calls this as
+// this.ha, ah, function(h) {
+//   0 < h.ec.get(Gk).ex.length && (g.Q_ = !0)}
 var Y = function(b, g, m) {
+        console.log("b before: " + b);
         b = b.find(g);
-        b = p(b); // no idea what lowercase p does. This is a function called for a lot of game modes. Uses Q_ for the m function in marathon.
+        console.log("b after: " + b);
+        b = p(b); // no idea what lowercase p does. Y is a function called for a lot of game modes. Uses Q_ for the m function in marathon.
         for (g = b.next(); !g.done; g = b.next()) m(g.value)
     },
     Q = function(b, g) {
@@ -39873,7 +39879,7 @@ Hr.prototype.tick = function() {
             for (c = k.next(); !c.done; c = k.next())
                 for (c = b.ha.find(c.value), c = p(c), a = c.next(); !a.done; a = c.next())
                     if (a = a.value, b.Tc(g, a) && !(0 <= Ua(m.ex, a))) {
-                        m.ex.push(a);
+                        m.ex.push(a); // so this is what pushes values to ex in Gk
                         c = new createjs.Event("trigger", !1, !1);
                         c.NU = a;
                         g.dispatchEvent(c);
@@ -39958,11 +39964,11 @@ Rr.prototype.tick = function() { // Marathon game function. Some math involved. 
         c = this.ha.Cc.ak;
     g.Q_ = !1;
     Y(this.ha, ah, function(h) {
-        0 < h.ec.get(Gk).ex.length && (g.Q_ = !0) // have to look at ah and Gk functions
+        0 < h.ec.get(Gk).ex.length && (g.Q_ = !0) // have to look at ah and Gk functions. I think ah is sections of the marathon tiles.
     });
     Y(this.ha, $g, function(h) {
         0 < h.ec.get(Gk).ex.length && 0 == g.vK && 0 == g.KQ && (A.COa.play(), g.vK = 30, k.LL = .25 * k.LL) // confused on how g.vK works here though
-    });
+    });                                                                                                                       //19 feels like a weird num
     0 < g.vK ? (g.vK--, Vi(b, 3)) : 0 < g.KQ ? (g.KQ--, Vi(b, 3), 4 == g.KQ && Qj(this.ha, Pj(this.ha, this.ha.ha.kXa), b)) : (Vi(b, 19), g.Q_ ? k.LL++ : k.LL = .9 * k.LL);
     0 < g.U_ ? g.U_-- : 0 == g.vK && 0 == g.KQ && c.Ca[4] && (g.KQ = 40, g.U_ = 150, Qj(this.ha, // KQ set here. It's invisibility frames
         Pj(this.ha, this.ha.ha.iXa), b));                                                        // U_ is probably cooldown 
@@ -41288,8 +41294,8 @@ var ls = function(b) {
             var c = ko(b.Cc.Ca.name);
             null == m && (m = Ao(k, g));
             var a = Do(k, g, m); // this is used to update scores when minigame ends
-            console.log("Xo Ending game c: " + c);
-            console.log("Xo Ending game m: " + m);
+         //   console.log("Xo Ending game c: " + c);
+          //  console.log("Xo Ending game m: " + m);
 
             // if (3 == m) { // it's gotta be here or above you get rewarded scroll
             //     if (!io(c)) {
