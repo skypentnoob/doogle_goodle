@@ -4,14 +4,14 @@ Thanks to all discord members involved with putting the necessary files for the 
 
 ## Modding Roadmap
 - [x] Cat go brrr 
-- [ ] Make "Infinite" Marathon
+- [x] Make "Infinite" Marathon
   - [x] Change length of marathon
   - [x] Figure out how game determines ends
   - [x] Find hit detection function
   - [x] Swap hit function into conditional statement for determining end game
   - [ ] Offroad ends game
-  - [ ] Make it so first place doesn't glitch
-    - [x] Don't play video if first place
+  - [x] Make it so first place doesn't glitch
+    - [x] Don't play video if first place (video function returns and score never shown to player)
     - [ ] Rewarding scroll would be nice
   - [ ] Spawning obstacles need to be harder probably
 - [ ] Roll indoors
