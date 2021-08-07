@@ -41276,8 +41276,8 @@ var ls = function(b) {
             var c = ko(b.Cc.Ca.name);
             null == m && (m = Ao(k, g));
             var a = Do(k, g, m); // this is used to update scores when minigame ends
-            Console.log("Xo Ending game c: " + c);
-            Console.log("Xo Ending game m: " + m);
+            console.log("Xo Ending game c: " + c);
+            console.log("Xo Ending game m: " + m);
 
             // if (3 == m) { // it's gotta be here or above you get rewarded scroll
             //     if (!io(c)) {
