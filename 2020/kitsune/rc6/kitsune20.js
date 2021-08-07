@@ -3470,7 +3470,7 @@ var Ug = function(b) {
     D.call(this, b);
     this.tick = 0;
     this.LL = 1;
-    this.UB = 0;
+    this.UB = 0; // Yeah I don't understand javascript. These are initial marathon values Idk how these get() function calls are working
     this.$_ = 1
 };
 q(Ug, D);
@@ -37309,7 +37309,7 @@ var Y = function(b, g, m) {
 var go = function(b) {
         return b ? fg.includes(b) : !1
     },
-    ho = function(b) {
+    ho = function(b) { 
         return "overworld" == b || "interior" == b
     },
     io = function(b) { // could use this to prevent videos from showing
@@ -39963,8 +39963,8 @@ Rr.prototype.tick = function() { // Marathon game function. Some math involved. 
         0 < h.ec.get(Gk).ex.length && 0 == g.vK && 0 == g.KQ && (A.COa.play(), g.vK = 30, k.LL = .25 * k.LL) // confused on how g.vK works here though
     });
     0 < g.vK ? (g.vK--, Vi(b, 3)) : 0 < g.KQ ? (g.KQ--, Vi(b, 3), 4 == g.KQ && Qj(this.ha, Pj(this.ha, this.ha.ha.kXa), b)) : (Vi(b, 19), g.Q_ ? k.LL++ : k.LL = .9 * k.LL);
-    0 < g.U_ ? g.U_-- : 0 == g.vK && 0 == g.KQ && c.Ca[4] && (g.KQ = 40, g.U_ = 150, Qj(this.ha, // KQ set here. 
-        Pj(this.ha, this.ha.ha.iXa), b));
+    0 < g.U_ ? g.U_-- : 0 == g.vK && 0 == g.KQ && c.Ca[4] && (g.KQ = 40, g.U_ = 150, Qj(this.ha, // KQ set here. It's invisibility frames
+        Pj(this.ha, this.ha.ha.iXa), b));                                                        // U_ is probably cooldown 
     k.UB = Math.sqrt(111 + k.LL) / 3;
     g.eqa = Math.min(2.5, .45 * k.UB);
     var a = ti(b, di);
@@ -39975,9 +39975,9 @@ Rr.prototype.tick = function() { // Marathon game function. Some math involved. 
     0 < C(c) ? (b.ec.get(M).velocity = lg(c, g.eqa * C(c)), a = ch(0, (m.x / 320 - .2) / .2, 1), n = 0 == g.vK ? Math.pow(1 - a, 2) : 0, 0 < b.ec.get(M).velocity.x && (b.ec.get(M).velocity.x *= n, k.LL += a * a * .4)) : b.ec.get(M).velocity = B(0, 0);
     if (0 == C(c) || 0 < g.vK) m = 5 * ch(0, m.x / 320 - .1, .4), b.ec.get(M).velocity.x -= m;
     m = Pr(k.UB);
-    0 < g.vK ? Kj(b, "stumble") : // seems like g.vK holds the hit detection value? So we just need to run: 
+    0 < g.vK ? Kj(b, "stumble") : // seems like g.vK holds the hit detection value. So we just need to run: 
         Kj(b, ["idle", "walk", "run", "naruto", "supernaruto"][m]);    // var b = Q(this.ha, [Sg, Ui]), 
-    Sr(m);                                                             // g = b.ec.get(Sg)  and check g.vK?
+    Sr(m);                                                             // g = b.ec.get(Sg)  and check g.vK
     k.tick++
 };
 var Sr = function(b) {
@@ -40023,6 +40023,8 @@ Tr.prototype.tick = function() { // Marathon. I think this mostly handles updati
         3 >
             E && (u *= .4 + .6 * E / 3);
         d = d.speed;
+        console.log("d:" + d);
+        console.log("E:" + E);
         20 < E && 5 > v.x && (n = Math.pow((6 - Math.abs(ch(-5, v.x + 1, 6))) / 9, 1.5), d = d * (1 - n) + a.UB * n);
         n = B(d * u, 0);
         (n = c.filter(function(P) {
@@ -40038,7 +40040,7 @@ var Ur = function() {
     X.apply(this, arguments)
 };
 q(Ur, X);
-Ur.prototype.tick = function() {
+Ur.prototype.tick = function() { // Marathon something 
     var b = Q(this.ha, Ug).ec.get(Ug);
     Y(this.ha, Vg, function(g) {
         var m = N(g);
@@ -40148,9 +40150,10 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
         hit_object = b.ec.get(Sg); // ok doesn't make it so you don't get scroll
         console.log("g's keys in as marathon function are: " + Object.keys(g));
         console.log("Sg returns for .KG :")
+        // KQ is invisibility
   //      console.log("as function triggered in marathon:" + Object.keys(this));
    // if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
-    if((hit_object.vK || hit_object.KQ) && !this.Ca){
+    if(hit_object.vK && !this.Ca){ 
         Vi(b, 1);
         b.ec.get(M).velocity = lg(B(1, 0), C(b.ec.get(M).velocity) + g.UB);
         g.UB = 0;
