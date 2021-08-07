@@ -37557,7 +37557,7 @@ var yo = function(b) {
         if ("points" == wo[b].type && yo(b) < g || "time" == wo[b].type && (null == yo(b) || yo(b) > g)) uh(b + "_score", g),
             k = !0;
         if (0 >= m) return k;
-        zo(b) < m && uh(b + "_rating", m);
+        zo(b) < m && uh(b + "_rating", m); // Do function might be striking again (current Marathon error with not awarding scroll)
         var c = Number.parseInt(th("SUBMITTED_SCORES", 0), 10);
         uh("SUBMITTED_SCORES", c + m);
         c = hg.get(th("PLAYER_TEAM", ""));
@@ -39469,9 +39469,12 @@ gr.prototype.tick = function() {
             a = b.ha.Cc.ak,
             n = a.ha, // aha is coefficient in front of x y when calculating the speed update
             h = Math.round(8 * C(n)) / 8,
-            d = mh(n);
+            d = mh(n),
+            roll_speed = 20, 
+            walk_speed = 15; // this gets modified by h. I don't remember what C does. TODO: Look at what C does. 
+            ;
            // console.log("gr function triggered: k.velocity is:" + k.velocity)
-        0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, 20), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, 15 * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
+        0 < m.Jaa ? m.Jaa-- : 0 < C(n) ? a.Ca[4] ? (Nj(g, "roll", b.ha), m.Jaa = 9, k.velocity = lg(n, roll_speed), c.direction = d, A.uja.play()) : (Nj(g, "walk", b.ha), k.velocity = lg(n, walk_speed * h), c.direction = d) : (Nj(g, "idle", b.ha), k.velocity = B(0, 0))
     }) // This updates lucky's speed in the over world. "playerMovement" holds his max speed. But for some reason that's ignored in favor of just setting it with a magic number in the call to lg
 };
 var nr = function() {
@@ -40141,7 +40144,7 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
         console.log("g's keys in as marathon function are: " + Object.keys(g));
   //      console.log("as function triggered in marathon:" + Object.keys(this));
    // if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
-    if(hit_object.vK){
+    if(hit_object.vK && !this.Ca){
         Vi(b, 1);
         b.ec.get(M).velocity = lg(B(1, 0), C(b.ec.get(M).velocity) + g.UB);
         g.UB = 0;
@@ -40900,13 +40903,13 @@ Hs.prototype.fu = function(b) {
         Z(m, L("SETTINGS"));
         m = {};
         for (var k = p([
-                ["climbing", "climbing"],
-                ["skate", "skate"],
-                ["rugby", "rugby"],
-                ["archery", "archery"],
-                ["pingpong", "pingpong"],
-                ["swim", "swim"],
-                ["marathon", "marathon"]
+                ["climbing", "climbing"], // 1
+                ["skate", "skate"],       // 2
+                ["rugby", "rugby"],       // 3
+                ["archery", "archery"],   // 4
+                ["pingpong", "pingpong"], // 5
+                ["swim", "swim"],         // 6
+                ["marathon", "marathon"]  // 7
             ]), c = k.next(); !c.done; m = {
                 PY: m.PY
             }, c = k.next()) {
@@ -41240,10 +41243,10 @@ var ls = function(b) {
     Gp = function(b) {
         Vo(b, "stats");
         b = b.Ca.kS;
-        for (var g = p([
+        for (var g = p([ // p here might be important to understanding the subfunctions used for updating stats
                 ["archery", b.wL, b.nY],
                 ["climbing", b.yL, b.qY],
-                ["marathon", b.GL, b.BY],
+                ["marathon", b.GL, b.BY], 
                 ["pingpong", b.HL, b.EY],
                 ["rugby", b.JL, b.JY],
                 ["skate", b.NL, b.LY],
@@ -41267,6 +41270,8 @@ var ls = function(b) {
         m = void 0 === m ? null : m;
         var k = (new Xn(b.Cc.Ca.name, b.Cc.Ca.ha)).toString();
         if (k) {
+            // so we definitely get here before marathon ends. But for some reason scroll isn't 
+            // being registered
             var c = ko(b.Cc.Ca.name);
             null == m && (m = Ao(k, g));
             var a = Do(k, g, m); // this is used to update scores when minigame ends
