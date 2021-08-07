@@ -13,7 +13,8 @@ Thanks to all discord members involved with putting the necessary files for the 
   - [x] Make it so first place doesn't glitch
     - [x] Don't play video if first place (video function returns and score never shown to player)
     - [ ] Rewarding scroll would be nice
-  - [ ] Spawning obstacles need to be harder probably
+  - [ ] Spawning obstacles need to be harder probably (this is not true)
+  - [ ] For some reason "on road" aka Q_ is set 0 when holding left (I think it's because the tile ends and the ah function checks the current tile)
 - [ ] Roll indoors
 - [ ] Custom climbing/rugby/skate maps?
 - [ ] Go???
