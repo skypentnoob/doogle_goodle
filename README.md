@@ -11,6 +11,8 @@ Thanks to all discord members involved with putting the necessary files for the 
   - [x] Swap hit function into conditional statement for determining end game
   - [ ] Offroad ends game
   - [ ] Make it so first place doesn't glitch
+    - [x] Don't play video if first place
+    - [ ] Rewarding scroll would be nice
   - [ ] Spawning obstacles need to be harder probably
 - [ ] Roll indoors
 - [ ] Custom climbing/rugby/skate maps?
