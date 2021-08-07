@@ -3455,7 +3455,8 @@ var Sg = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
     this.Q_ = !0;
-    this.eqa = this.vK = this.KQ = this.U_ = 0
+    this.eqa = this.vK = this.KQ = this.U_ = 0 // I think it returns the values because you call get(Sg), but I don't really understand
+                                               // it just looks like they're all being set to 0, but that's not the case
 };
 q(Sg, D);
 G("marathonPlayer", Sg);
@@ -39962,7 +39963,7 @@ Rr.prototype.tick = function() { // Marathon game function. Some math involved. 
         0 < h.ec.get(Gk).ex.length && 0 == g.vK && 0 == g.KQ && (A.COa.play(), g.vK = 30, k.LL = .25 * k.LL) // confused on how g.vK works here though
     });
     0 < g.vK ? (g.vK--, Vi(b, 3)) : 0 < g.KQ ? (g.KQ--, Vi(b, 3), 4 == g.KQ && Qj(this.ha, Pj(this.ha, this.ha.ha.kXa), b)) : (Vi(b, 19), g.Q_ ? k.LL++ : k.LL = .9 * k.LL);
-    0 < g.U_ ? g.U_-- : 0 == g.vK && 0 == g.KQ && c.Ca[4] && (g.KQ = 40, g.U_ = 150, Qj(this.ha,
+    0 < g.U_ ? g.U_-- : 0 == g.vK && 0 == g.KQ && c.Ca[4] && (g.KQ = 40, g.U_ = 150, Qj(this.ha, // KQ set here. 
         Pj(this.ha, this.ha.ha.iXa), b));
     k.UB = Math.sqrt(111 + k.LL) / 3;
     g.eqa = Math.min(2.5, .45 * k.UB);
@@ -40146,9 +40147,10 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
         
         hit_object = b.ec.get(Sg); // ok doesn't make it so you don't get scroll
         console.log("g's keys in as marathon function are: " + Object.keys(g));
+        console.log("Sg returns for .KG :")
   //      console.log("as function triggered in marathon:" + Object.keys(this));
    // if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
-    if(hit_object.vK && !this.Ca){
+    if((hit_object.vK || hit_object.KQ) && !this.Ca){
         Vi(b, 1);
         b.ec.get(M).velocity = lg(B(1, 0), C(b.ec.get(M).velocity) + g.UB);
         g.UB = 0;
