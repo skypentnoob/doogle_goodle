@@ -37300,7 +37300,7 @@ l.find = function(b) {
 };
 var Y = function(b, g, m) {
         b = b.find(g);
-        b = p(b);
+        b = p(b); // no idea what lowercase p does. This is a function called for a lot of game modes. Uses Q_ for the m function in marathon.
         for (g = b.next(); !g.done; g = b.next()) m(g.value)
     },
     Q = function(b, g) {
@@ -39957,10 +39957,10 @@ Rr.prototype.tick = function() { // Marathon game function. Some math involved. 
         c = this.ha.Cc.ak;
     g.Q_ = !1;
     Y(this.ha, ah, function(h) {
-        0 < h.ec.get(Gk).ex.length && (g.Q_ = !0)
+        0 <= h.ec.get(Gk).ex.length && (g.Q_ = !0)
     });
     Y(this.ha, $g, function(h) {
-        0 < h.ec.get(Gk).ex.length && 0 == g.vK && 0 == g.KQ && (A.COa.play(), g.vK = 30, k.LL = .25 * k.LL) // confused on how g.vK works here though
+        0 <= h.ec.get(Gk).ex.length && 0 == g.vK && 0 == g.KQ && (A.COa.play(), g.vK = 30, k.LL = .25 * k.LL) // confused on how g.vK works here though
     });
     0 < g.vK ? (g.vK--, Vi(b, 3)) : 0 < g.KQ ? (g.KQ--, Vi(b, 3), 4 == g.KQ && Qj(this.ha, Pj(this.ha, this.ha.ha.kXa), b)) : (Vi(b, 19), g.Q_ ? k.LL++ : k.LL = .9 * k.LL);
     0 < g.U_ ? g.U_-- : 0 == g.vK && 0 == g.KQ && c.Ca[4] && (g.KQ = 40, g.U_ = 150, Qj(this.ha, // KQ set here. It's invisibility frames
@@ -40042,8 +40042,8 @@ Ur.prototype.tick = function() { // Marathon something
     var b = Q(this.ha, Ug).ec.get(Ug);
     Y(this.ha, Vg, function(g) {
         var m = N(g);
-        m.x -= b.UB;
-        console.log("are we here?: " + m.x);
+        m.x -= b.UB; // I think this tracks your position relative to everyone else
+       // console.log("are we here?: " + m.x);
         Fj(g, m)
     });
     Y(this.ha, hi, function(g) {
@@ -40147,11 +40147,13 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
         g = Q(this.ha, Ug).ec.get(Ug);
         
         hit_object = b.ec.get(Sg); // ok doesn't make it so you don't get scroll
-        console.log("g's keys in as marathon function are: " + Object.keys(g));
+       // console.log("g's keys in as marathon function are: " + Object.keys(g));
+        // Believe all keys should be in Ug if need a reference
+
         // KQ is invisibility
   //      console.log("as function triggered in marathon:" + Object.keys(this));
    // if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
-    console.log("Q_ is:" + hit_object.Q_);
+   // console.log("Q_ is:" + hit_object.Q_);
     if((hit_object.vK || !hit_object.Q_) && !this.Ca){ 
         Vi(b, 1);
         b.ec.get(M).velocity = lg(B(1, 0), C(b.ec.get(M).velocity) + g.UB);
