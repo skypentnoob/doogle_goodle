@@ -3629,8 +3629,9 @@ var th = function(b, g) {
     },
     uh = function(b, g) {
         if (sh) try {
-            console.log("uh function - We should set marathon_rating to 3? b (game type): " + b);
-            console.log("g (score?): " + g );
+            // if(b == "marathon")
+            // console.log("uh function - We should set marathon_rating to 3? b (game type): " + b);
+            // console.log("g (score?): " + g );
             window.localStorage.setItem("KITSUNE_" + b, JSON.stringify(g))
         } catch (m) {}
     },
@@ -39957,10 +39958,10 @@ Rr.prototype.tick = function() { // Marathon game function. Some math involved. 
         c = this.ha.Cc.ak;
     g.Q_ = !1;
     Y(this.ha, ah, function(h) {
-        0 <= h.ec.get(Gk).ex.length && (g.Q_ = !0)
+        0 < h.ec.get(Gk).ex.length && (g.Q_ = !0) // have to look at ah and Gk functions
     });
     Y(this.ha, $g, function(h) {
-        0 <= h.ec.get(Gk).ex.length && 0 == g.vK && 0 == g.KQ && (A.COa.play(), g.vK = 30, k.LL = .25 * k.LL) // confused on how g.vK works here though
+        0 < h.ec.get(Gk).ex.length && 0 == g.vK && 0 == g.KQ && (A.COa.play(), g.vK = 30, k.LL = .25 * k.LL) // confused on how g.vK works here though
     });
     0 < g.vK ? (g.vK--, Vi(b, 3)) : 0 < g.KQ ? (g.KQ--, Vi(b, 3), 4 == g.KQ && Qj(this.ha, Pj(this.ha, this.ha.ha.kXa), b)) : (Vi(b, 19), g.Q_ ? k.LL++ : k.LL = .9 * k.LL);
     0 < g.U_ ? g.U_-- : 0 == g.vK && 0 == g.KQ && c.Ca[4] && (g.KQ = 40, g.U_ = 150, Qj(this.ha, // KQ set here. It's invisibility frames
@@ -40149,6 +40150,7 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
         hit_object = b.ec.get(Sg); // ok doesn't make it so you don't get scroll
        // console.log("g's keys in as marathon function are: " + Object.keys(g));
         // Believe all keys should be in Ug if need a reference
+        // IC, tick, LL, UB, $_
 
         // KQ is invisibility
   //      console.log("as function triggered in marathon:" + Object.keys(this));
