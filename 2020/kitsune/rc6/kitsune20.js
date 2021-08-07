@@ -40142,11 +40142,11 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
     var b = Q(this.ha, Sg),
         g = Q(this.ha, Ug).ec.get(Ug);
         
-        hit_object = b.ec.get(Sg); // testing this 
+       // hit_object = b.ec.get(Sg); // testing this 
         console.log("g's keys in as marathon function are: " + Object.keys(g));
   //      console.log("as function triggered in marathon:" + Object.keys(this));
     if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
-   // if(hit_object.vK && !this.Ca){
+  // if(hit_object.vK && !this.Ca){
         Vi(b, 1);
         b.ec.get(M).velocity = lg(B(1, 0), C(b.ec.get(M).velocity) + g.UB);
         g.UB = 0;
@@ -40671,7 +40671,7 @@ var As = function() {
     S.apply(this, arguments)
 };
 q(As, S);
-As.prototype.fu = function(b) {
+As.prototype.fu = function(b) { // prints screen I guess after minigame?
     var g = this;
     if (b.ec.has(yi) && "results" == b.ec.get(yi).id) {
         var m = xi(b, "overworld");
