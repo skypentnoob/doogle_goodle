@@ -40022,9 +40022,7 @@ Tr.prototype.tick = function() { // Marathon. I think this mostly handles updati
         100 > E && (u += E / 100 * .05);
         3 >
             E && (u *= .4 + .6 * E / 3);
-        d = d.speed;
-        console.log("d:" + d);
-        console.log("E:" + E);
+        d = d.speed; // I think this is maybe cpus
         20 < E && 5 > v.x && (n = Math.pow((6 - Math.abs(ch(-5, v.x + 1, 6))) / 9, 1.5), d = d * (1 - n) + a.UB * n);
         n = B(d * u, 0);
         (n = c.filter(function(P) {
@@ -40045,6 +40043,7 @@ Ur.prototype.tick = function() { // Marathon something
     Y(this.ha, Vg, function(g) {
         var m = N(g);
         m.x -= b.UB;
+        console.log("are we here?: " + m.x);
         Fj(g, m)
     });
     Y(this.ha, hi, function(g) {
@@ -40149,7 +40148,6 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
         
         hit_object = b.ec.get(Sg); // ok doesn't make it so you don't get scroll
         console.log("g's keys in as marathon function are: " + Object.keys(g));
-        console.log("Sg returns for .KG :")
         // KQ is invisibility
   //      console.log("as function triggered in marathon:" + Object.keys(this));
    // if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
