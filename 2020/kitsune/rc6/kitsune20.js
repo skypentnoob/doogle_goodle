@@ -3484,7 +3484,7 @@ var Wg = function() {
 };
 q(Wg, D);
 G("marathonSpeedLine", Wg);
-var Xg = function(b) {
+var Xg = function(b) { // marathon speed 
     b = void 0 === b ? {} : b;
     D.call(this, b);
     this.speed = b.speed;
@@ -4378,7 +4378,7 @@ G("removeFx", ki);
 var li = function(b) {
     b = void 0 === b ? {} : b;
     D.call(this, b);
-    this.speed = 15; // I didn't have a semicolon after this how did it not break?
+    this.speed = 15; // I didn't have a semicolon after this how did it not break? Because something something Javascript return values?
     //ng("speed", b, 100) // This has to be changed for speed. Let's indoor speed increase, but not outdoor
     // still not sure how outdoor speed is set
 };   
@@ -37309,7 +37309,7 @@ var go = function(b) {
     ho = function(b) {
         return "overworld" == b || "interior" == b
     },
-    io = function(b) {
+    io = function(b) { // could use this to prevent videos from showing
         return !!th(b + "_VIDEO_SEEN", !1)
     },
     jo = function(b) {
@@ -40123,7 +40123,7 @@ Yr.prototype.tick = function() {
     var m = g.ec.get(ah).width;
     b = N(g).x + m;
     800 > b && ((Qr(g, this.ha) + m) / 24 > this.ha.kb.TOTAL_METER ? Zr(this, this.ha.ha.hka, B(b, 0)) : (g = g.ec.get(ah).end, g = rh(this.Ca.get(g)), Zr(this, g, B(b, 0))))
-}; // I think this line breaks when TOTAL METER is greater than 800 for regular play. Not sure. Marathon investigation.
+}; // Not sure. Marathon investigation. Might be why hit detection is bugging when game ends
 var Zr = function(b, g, m) {
         var k = Q(b.ha, Ug);
         g = Pj(b.ha, g);
@@ -40314,7 +40314,7 @@ es.prototype.start = function() {
         case "5000m":
             this.kb = {
                 TOTAL_METER: 5E3,
-                OPPONENT_COUNT: 12,
+                OPPONENT_COUNT: 8,
                 OPPONENT_MAX_SPEED: 8.4,
                 OPPONENT_MIN_SPEED: 4.7,
                 SPAWNERS: [this.ha.dL, this.ha.ZK, this.ha.dL, this.ha.ZK, this.ha.dL, this.ha.ZK, this.ha.mja],
@@ -40329,7 +40329,7 @@ es.prototype.start = function() {
                 OPPONENT_MIN_SPEED: 4,
                 SPAWNERS: [this.ha.dL, this.ha.ZK],
                 OBSTACLES: [this.ha.kY, this.ha.lY]*/
-                OPPONENT_COUNT: 12,
+                OPPONENT_COUNT: 8,
                 OPPONENT_MAX_SPEED: 8.4,
                 OPPONENT_MIN_SPEED: 4.7,
                 SPAWNERS: [this.ha.dL, this.ha.ZK, this.ha.dL, this.ha.ZK, this.ha.dL, this.ha.ZK, this.ha.mja],
@@ -40344,7 +40344,7 @@ es.prototype.start = function() {
     if (gf) {
         var b = this.Cc.oc;
         b.load("marathonoutro").then(function(g) {
-            return Cn(g)
+            return Cn(g) 
         });
         Co() && b.load("outro").then(function(g) {
             return Cn(g)
@@ -41272,26 +41272,31 @@ var ls = function(b) {
         if (k) {
             // so we definitely get here before marathon ends. But for some reason scroll isn't 
             // being registered
+            // probably this.Ca related, but idk
             var c = ko(b.Cc.Ca.name);
             null == m && (m = Ao(k, g));
             var a = Do(k, g, m); // this is used to update scores when minigame ends
-            if (3 == m) {
-                if (!io(c)) {
-                    Hq(b.Cc,
-                        new Xn("video", c));
-                    return
-                }
-                if (!io("outro") && Bo()) {
-                    Hq(b.Cc, new Xn("video", "outro"));
-                    return
-                }
-            }
+            Console.log("Xo Ending game c: " + c);
+            Console.log("Xo Ending game m: " + m);
+
+            // if (3 == m) { // it's gotta be here or above you get rewarded scroll
+            //     if (!io(c)) {
+            //         Hq(b.Cc,
+            //             new Xn("video", c));
+            //         return
+            //     }
+            //     if (!io("outro") && Bo()) {
+            //         Hq(b.Cc, new Xn("video", "outro"));
+            //         return
+            //     }
+            // }
+            // removing video for now
             Vo(b, "results");
             var n = wo[k].type;
             c = L("GAME_OVER") + "\n";
             c += L(Ss[m]) + "\n";
             c += "time" == n ? Xs(g) : L("SCORE_IS").replace("{{}}", g.toString());
-            Z(b.Ca.Jw, c);
+            Z(b.Ca.Jw, c); // Ca is here so maybe it's failing without the !this.Ca check. 
             var h = function(e) {
                 return "time" == n ? lk(e) : Math.ceil(e)
             };
