@@ -37304,9 +37304,9 @@ l.find = function(b) {
 // this.ha, ah, function(h) {
 //   0 < h.ec.get(Gk).ex.length && (g.Q_ = !0)}
 var Y = function(b, g, m) {
-        console.log("b before: " + b);
+  //      console.log("b before: " + b); 
         b = b.find(g);
-        console.log("b after: " + b);
+    //    console.log("b after: " + b); MovieClip (name = null)
         b = p(b); // no idea what lowercase p does. Y is a function called for a lot of game modes. Uses Q_ for the m function in marathon.
         for (g = b.next(); !g.done; g = b.next()) m(g.value)
     },
@@ -40124,6 +40124,8 @@ var Yr = function(b) {
 };
 q(Yr, X);
 Yr.prototype.tick = function() {
+    for(i = 0; i < this.ha.length; i++)
+        console.log(`this.ha[${i}]: ` + this.ha[i]);
     this.Iw = this.ha.find(ah).sort(function(k, c) {
         return N(k).x - N(c).x
     });
@@ -40136,7 +40138,7 @@ Yr.prototype.tick = function() {
     var m = g.ec.get(ah).width;
     b = N(g).x + m;
     800 > b && ((Qr(g, this.ha) + m) / 24 > this.ha.kb.TOTAL_METER ? Zr(this, this.ha.ha.hka, B(b, 0)) : (g = g.ec.get(ah).end, g = rh(this.Ca.get(g)), Zr(this, g, B(b, 0))))
-}; // Not sure. Marathon investigation. Might be why hit detection is bugging when game ends
+}; // Not sure. Marathon investigation. I think this is checking path related things
 var Zr = function(b, g, m) {
         var k = Q(b.ha, Ug);
         g = Pj(b.ha, g);
