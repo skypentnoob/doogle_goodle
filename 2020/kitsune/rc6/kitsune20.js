@@ -3628,7 +3628,7 @@ var th = function(b, g) {
     },
     uh = function(b, g) {
         if (sh) try {
-            console.log("uh function - We should set marathon_rating to 3? b (game type): ": + b);
+            console.log("uh function - We should set marathon_rating to 3? b (game type): " + b);
             console.log("g (score?): " + g );
             window.localStorage.setItem("KITSUNE_" + b, JSON.stringify(g))
         } catch (m) {}
