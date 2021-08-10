@@ -40124,8 +40124,9 @@ var Yr = function(b) {
 };
 q(Yr, X);
 Yr.prototype.tick = function() {
-    for(i = 0; i < this.ha.length; i++)
-        console.log(`this.ha[${i}]: ` + this.ha[i]);
+    // for(i = 0; i < this.ha.length; i++)
+    //     console.log(`this.ha[${i}]: ` + this.ha[i]);
+    // this did nothing. I have no idea how this.ha is an array
     this.Iw = this.ha.find(ah).sort(function(k, c) {
         return N(k).x - N(c).x
     });
@@ -40162,9 +40163,9 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
 
         // KQ is invisibility
   //      console.log("as function triggered in marathon:" + Object.keys(this));
-   // if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
+   if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
    // console.log("Q_ is:" + hit_object.Q_);
-    if((hit_object.vK || !hit_object.Q_) && !this.Ca){ 
+    //if((hit_object.vK || !hit_object.Q_) && !this.Ca){ 
         Vi(b, 1);
         b.ec.get(M).velocity = lg(B(1, 0), C(b.ec.get(M).velocity) + g.UB);
         g.UB = 0;
@@ -40343,17 +40344,17 @@ es.prototype.start = function() {
             break;
         default:
             this.kb = {
-                TOTAL_METER: 5e8,/*
+                TOTAL_METER: 400,
                 OPPONENT_COUNT: 6,
                 OPPONENT_MAX_SPEED: 7,
                 OPPONENT_MIN_SPEED: 4,
-                SPAWNERS: [this.ha.dL, this.ha.ZK],
-                OBSTACLES: [this.ha.kY, this.ha.lY]*/
-                OPPONENT_COUNT: 8,
-                OPPONENT_MAX_SPEED: 8.4,
-                OPPONENT_MIN_SPEED: 4.7,
-                SPAWNERS: [this.ha.dL, this.ha.ZK, this.ha.dL, this.ha.ZK, this.ha.dL, this.ha.ZK, this.ha.mja],
-                OBSTACLES: [this.ha.kY, this.ha.lY]
+                SPAWNERS: [], //[this.ha.dL, this.ha.ZK],
+                OBSTACLES: []//[this.ha.kY, this.ha.lY]
+                // OPPONENT_COUNT: 8,
+                // OPPONENT_MAX_SPEED: 8.4,
+                // OPPONENT_MIN_SPEED: 4.7,
+                // SPAWNERS: [this.ha.dL, this.ha.ZK, this.ha.dL, this.ha.ZK, this.ha.dL, this.ha.ZK, this.ha.mja],
+                // OBSTACLES: [this.ha.kY, this.ha.lY]
             }
     }
     this.Ca = new this.ha.kU;
