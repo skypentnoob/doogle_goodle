@@ -40163,7 +40163,7 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
 
         // KQ is invisibility
   //      console.log("as function triggered in marathon:" + Object.keys(this));
-     var condition = False;
+     var condition = false;
      if(this.ha.kb.TOTAL_METER == 5e8){
          condition = (hit_object.vK || !hit_object.Q_) && !this.Ca;
      } else {
