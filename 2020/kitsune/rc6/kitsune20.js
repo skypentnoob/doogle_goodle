@@ -40064,7 +40064,7 @@ var Vr = function(b) {
     this.Ca = this.kb = 200
 };
 q(Vr, X);
-Vr.prototype.tick = function() { // spawning function
+Vr.prototype.tick = function() { // spawning function.
     var b = Q(this.ha, Ug),
         g = b.ec.get(Ug),
         m = 5 / Math.pow(g.UB, 1.5);
@@ -40163,7 +40163,14 @@ as.prototype.tick = function() { // This seems to be one of the outer most funct
 
         // KQ is invisibility
   //      console.log("as function triggered in marathon:" + Object.keys(this));
-   if (Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca) { // Marathon: this is normally what determines if game ends
+     var condition = False;
+     if(this.ha.kb.TOTAL_METER == 5e8){
+         condition = (hit_object.vK || !hit_object.Q_) && !this.Ca;
+     } else {
+         condition = Qr(b, this.ha) / 24 > this.ha.kb.TOTAL_METER && !this.Ca;
+     }
+  
+   if (condition) { // Marathon: this is normally what determines if game ends
    // console.log("Q_ is:" + hit_object.Q_);
     //if((hit_object.vK || !hit_object.Q_) && !this.Ca){ 
         Vi(b, 1);
@@ -40334,7 +40341,7 @@ es.prototype.start = function() {
             break;
         case "5000m":
             this.kb = {
-                TOTAL_METER: 5E3,
+                TOTAL_METER: 5E8,
                 OPPONENT_COUNT: 8,
                 OPPONENT_MAX_SPEED: 8.4,
                 OPPONENT_MIN_SPEED: 4.7,
